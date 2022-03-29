@@ -1,0 +1,2 @@
+module Employer::HospitalsHelper
+end

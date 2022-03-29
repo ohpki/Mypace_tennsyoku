@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hospital_id: 1
+  title: MyString
+  work_style: MyString
+  alarys: MyString
+  hospital_name: MyString
+  address: MyString
+  job_offer_status: false
+  job_detail: MyText
+
+two:
+  hospital_id: 1
+  title: MyString
+  work_style: MyString
+  alarys: MyString
+  hospital_name: MyString
+  address: MyString
+  job_offer_status: false
+  job_detail: MyText

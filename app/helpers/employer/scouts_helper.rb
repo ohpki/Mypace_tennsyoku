@@ -1,0 +1,2 @@
+module Employer::ScoutsHelper
+end
