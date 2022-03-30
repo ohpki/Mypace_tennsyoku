@@ -1,0 +1,58 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+// @font-face {
+//     font-family: "azuki";
+//     font-style: normal;
+//     src: asset_url('azuki.ttf') ;
+// }
+// * {
+//   font-family: 'azuki';
+// }
+
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+* {
+  font-family: 'Yusei Magic', sans-serif;
+  // background-color: #FFCCCC;
+  color: #550000;
+}
+header {
+  background-color: #440000;
+}
+main {
+  background-color: #ffebeb;
+  height: 100%;
+  padding: 50px 0px;
+
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  background-color: #ffebeb;
+}
+
+footer {
+  height: 50px;
+  width: 100%;
+  background-color: #440000;
+  position: absolute;
+  bottom: 0;
+}
+

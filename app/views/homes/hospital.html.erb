@@ -1,2 +1,12 @@
-<h1>Homes#hospital</h1>
-<p>Find me in app/views/homes/hospital.html.erb</p>
+<div class="container">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6">
+      <p>会員登録をすると、求人情報を掲載できます。</p>
+      <p>求人情報への応募一覧や、求職中の看護師一覧を見ることができます。</p>
+      <p>看護師をスカウトしたり、メッセージのやりとりをすることができます。</p>
+
+      <%= link_to "新規会員登録", new_hospital_registration_path, class: "btn btn-outline-secondary w-75 m-3" %>
+      <%= link_to "ゲストログイン", new_hospital_registration_path, class: "btn btn-outline-secondary w-75 m-3" %>
+    </div>
+  </div>
+</div>

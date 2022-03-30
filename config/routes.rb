@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :hospitals, skip: [:passwords], controllers: {
+  devise_for :nurses, skip: [:passwords], controllers: {
     registrations: "worker/registrations",
     sessions: 'worker/sessions'
 }
-  devise_for :nurses, skip: [:passwords], controllers: {
+  devise_for :hospitals, skip: [:passwords], controllers: {
     registrations: "employer/registrations",
     sessions: "employer/sessions"
 
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'homes/about'
   get 'homes/nurse'
   get 'homes/hospital'
+  get 'homes/confirm'
   resources :notifications, only: [:new, :create, :index, :edit]
   resources :chats, only: [:new, :create, :index]
   resources :chats, only: [:new, :create, :index, :show]

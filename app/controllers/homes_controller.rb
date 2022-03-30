@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
   def top
+    @nurse = current_nurse
   end
 
   def about

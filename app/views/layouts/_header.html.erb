@@ -1,0 +1,42 @@
+<header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+
+      <% if nurse_signed_in? %>
+        <ul class="navbar-nav mt-auto">
+            <%= link_to image_tag("btn-about.png", width: '200', alt: "サイトについて"), homes_about_path, class: "ml-5" %>
+            <%= link_to image_tag("btn-jobs.png", width: '200', alt: "求人一覧"), worker_job_informations_path, class: "ml-5" %>
+        </ul>
+        <%= link_to image_tag("logo.png", width: '150', alt: "マイペース転職"), root_path %>
+        <ul class="navbar-nav ml-auto mt-auto">
+            <%= link_to image_tag("btn-mine.png", width: '200', alt: "マイページ"), worker_nurses_path, class: "mr-5" %>
+            <%= link_to image_tag("btn-sign-out.png", width: '200', alt: "ログアウト"), destroy_nurse_session_path, method: :delete, class: "mr-5" %>
+        </ul>
+          <% elsif hospital_signed_in? %>
+          <ul class="navbar-nav mt-auto">
+            <%= link_to image_tag("btn-about.png", width: '200', alt: "サイトについて"), homes_about_path, class: "ml-5" %>
+            <%= link_to image_tag("btn-nurses.png", width: '200', alt: "看護師一覧"), worker_job_informations_path, class: "ml-5" %>
+          </ul>
+            <%= link_to image_tag("logo.png", width: '150', alt: "マイペース転職"), root_path, class: "mx-3"  %>
+          <ul class="navbar-nav mt-auto">
+            <%= link_to image_tag("btn-mine.png", width: '200', alt: "マイページ"), employer_hospitals_path, class: "mr-5" %>
+            <%= link_to image_tag("btn-sign-out.png", width: '200', alt: "ログアウト"), destroy_nurse_session_path, method: :delete, class: "mr-5" %>
+          </ul>
+          <% else %>
+          <ul class="navbar-nav mt-auto">
+            <%= link_to image_tag("btn-about.png", width: '200', alt: "サイトについて"), homes_about_path, class: "mx-3" %>
+            <%= link_to image_tag("btn-jobs.png", width: '200', alt: "求人一覧"), worker_job_informations_path, class: "mx-3" %>
+          </ul>
+
+            <%= link_to image_tag("logo.png", width: '150', alt: "マイペース転職"), root_path, class: "mx-5" %>
+          <ul class="navbar-nav mt-auto">
+            <%= link_to image_tag("btn-new.png", width: '200', alt: "新規登録"), root_path, class: "mx-3" %>
+            <%= link_to image_tag("btn-sign-in.png", width: '200', alt: "ログイン"), homes_confirm_path, class: "mx-3" %>
+          </ul>
+          <% end %>
+          </div>
+
+
+    </div>
+  </div>
+</header>
