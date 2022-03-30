@@ -6,11 +6,11 @@ class DeviseCreateHospitals < ActiveRecord::Migration[6.1]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      
-      t.string :name, null: false
-      t.string :postal_code, null: false, length: { in: 1..20 }
-      t.string :address, null: false, length: { is: 7 }
-      t.string :phone_number, null: false, length: { is: 11 }
+
+      t.string :name
+      t.string :postal_code
+      t.string :address
+      t.string :phone_number
       t.text :Introduction
 
       ## Recoverable

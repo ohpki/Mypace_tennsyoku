@@ -8,13 +8,13 @@ class DeviseCreateNurses < ActiveRecord::Migration[6.1]
       t.string :encrypted_password, null: false, default: ""
 
       t.string :nickname
-      t.string :first_name, null: false, length: { in: 1..20 }
-      t.string :last_name, null: false, length: { in: 1..20 }
-      t.string :first_name_kana, null: false, length: { in: 1..40 }
-      t.string :last_name_kan, null: false, length: { in: 1..40 }
+      t.string :first_name
+      t.string :last_name
+      t.string :first_name_kana
+      t.string :last_name_kana
       t.string :addres
       t.string :qualification
-      t.boolean :job_seeking_status, null: false, default: "true"
+      t.boolean :job_seeking_status, default: "true"
       t.string :birthday
       t.text :introduction
 
