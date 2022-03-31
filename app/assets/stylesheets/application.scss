@@ -36,7 +36,7 @@ header {
 main {
   background-color: #ffebeb;
   height: 100%;
-  padding: 50px 0px;
+  padding: 30px 0px;
 
 }
 
@@ -54,5 +54,27 @@ footer {
   background-color: #440000;
   position: absolute;
   bottom: 0;
+}
+
+.notice {
+  width: 500px;
+  margin: 20px auto;
+  background-color: #440000;
+  color: white;
+  text-align: center;
+}
+
+.alert {
+  background-color: red;
+  color: #white;
+  text-align: center;
+}
+
+@media screen and (max-width:768px) {
+  .notice {
+  width: 100%;
+  margin: 20px 0px;
+
+}
 }
 

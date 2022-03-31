@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class Employer::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_permitted_parameters, only: [:create]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :postal_code, :address, :phone_number, :Introduction, :image])
+  end
 
   # GET /resource/sign_up
   # def new
@@ -59,4 +63,11 @@ class Employer::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def after_sign_up_path_for(resource)
+    employer_hospitals_path
+  end
+
+  def after_update_path_for(resource)
+    employer_hospitals_path
+  end
 end
