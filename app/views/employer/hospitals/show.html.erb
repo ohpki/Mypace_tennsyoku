@@ -1,4 +1,18 @@
-
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center justify-content-center mt-7">
+          <h2>マイページ</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 ml-auto">
+      <%= image_tag @hospital.get_image(250, 150), size: '300x240'%><br>
+      <h4><%= @hospital.name %></h4>
+      <%= link_to "編集する", edit_employer_hospitals_path, class: "btn btn-secondary w-75 mt-3" %>
+    </div>
+    <div class="col-lg-8 ml-auto">
 
 <div class="profile">
   <ul class="profile-list">
@@ -8,6 +22,7 @@
   </ul>
   <div class="tabbox-contents">
     <div class="tabbox box-show">
+      投稿した求人情報一覧
       <% @job_informations.each do |job_information| %>
         <div class="job_informations-box">
           <%= link_to job_information.title, employer_job_information_path(job_information), class: "link-secondary" %><br>
@@ -16,6 +31,8 @@
           <%= @hospital.display_job_offer_status(job_information.job_offer_status) %>
         </div>
       <% end %>
+
+      <%= paginate @job_informations %>
     </div>
     <div class="tabbox">
       <p>タブ2の中身が入ります。</p>
@@ -28,4 +45,7 @@
       <p>タブ3の中身が入ります。</p>
     </div>
   </div>
+</div>
+</div>
+</div>
 </div>
