@@ -77,4 +77,15 @@ footer {
 
 }
 }
+.pagination>li>a {
+  color: #550000;
+  padding: 0px 10px;
+  margin: 0px 5px;
+  border-bottom: solid 1px #550000;
+  border-radius: 5px;
+}
+
+.pagination>.active>a {
+  background: #fff;
+}
 

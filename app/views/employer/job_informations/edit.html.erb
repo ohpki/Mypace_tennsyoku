@@ -7,8 +7,9 @@
         </div>
       </div>
     </div>
-    <%= render "form", job_information: @job_information, hospital: @hospital, btn: "update" %>
-     <!--btn = "update"でformのボタンを"更新"で表示-->
+      <%= form_with model:@job_information, method: :patch, url: "/employer/job_informations/#{@job_information.id}", local:true do |f| %>
+        <%= render partial: 'form', locals: { :f => f, job_information: @job_information, hospital: @hospital} %>
+      <% end %>
   </div>
 </div>
 
