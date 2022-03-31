@@ -1,2 +1,17 @@
-<h1>Employer::Hospitals#quit</h1>
-<p>Find me in app/views/employer/hospitals/quit.html.erb</p>
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-10">
+      <div class="d-flex align-items-center justify-content-center">
+        <h2>本当に退会しますか？</h2>
+      </div>
+    </div>
+  </div>
+        <div class="row align-items-center justify-content-center">
+          <div class="col-lg-10">
+            <div class="d-flex align-items-center justify-content-center">
+              <%= link_to "やめる", employer_hospitals_path, class: "btn btn-secondary m-3" %>
+              <%= link_to "退会する", employer_hospitals_path, method: :delete, class: "btn btn-danger m-3" %>
+            </div>
+          </div>
+        </div>
+</div>

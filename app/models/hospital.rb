@@ -7,7 +7,7 @@ class Hospital < ApplicationRecord
 
   has_many :job_informations, dependent: :destroy
   has_many :scouts, dependent: :destroy
-  has_many :notifications, dependent: :destroy
+  has_many :notifications
   has_many :chat_rooms, dependent: :destroy
 
   def display_job_offer_status(status)

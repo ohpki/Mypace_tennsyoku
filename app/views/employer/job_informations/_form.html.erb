@@ -6,13 +6,13 @@
     </div>
     <div class="col-lg-8">
         <%= f.label :"要件" %>
-        <%= f.text_field :title, placeholder: "看護師(一般病棟)常勤スタッフ", class:"form-control", autocomplete: "off" %>
+        <%= f.text_field :title, placeholder: "看護師(一般病棟)常勤スタッフ", class:"form-control" %>
         <%= f.label :"勤務形態" %>
-        <%= f.text_field :work_style, placeholder: "常勤", class:"form-control", autocomplete: "off" %>
+        <%= f.text_field :work_style, placeholder: "常勤", class:"form-control" %>
         <%= f.label :"給与" %>
-        <%= f.text_field :alarys, placeholder: "基本月給:〇〇～〇〇円", class:"form-control", autocomplete: "off" %>
+        <%= f.text_field :alarys, placeholder: "基本月給:〇〇～〇〇円", class:"form-control" %>
         <%= f.label :"仕事内容・備考" %>
-        <%= f.text_area :job_detail, placeholder: "仕事内容、勤務時間、診療科目、応募雇用形態、休日、待遇等", class:"form-control", autocomplete: "off" %>
+        <%= f.text_area :job_detail, placeholder: "仕事内容、勤務時間、診療科目、応募雇用形態、休日、待遇等", class:"form-control" %>
         <%= f.radio_button :job_offer_status, :true, checked: true %>
         <%= f.label :job_offer_status, "公開", {value: :true, style: "display: inline-block;"} %>
         <%= f.radio_button :job_offer_status, :false %>
@@ -24,7 +24,7 @@
         <% else %>
           <%= f.submit "更新", class: "btn btn-secondary w-50 mt-3" %>
         <% end %>
-        </div>
+        </div>　
 
 
 

@@ -14,38 +14,45 @@
     </div>
     <div class="col-lg-8 ml-auto">
 
-<div class="profile">
-  <ul class="profile-list">
-    <li class="profile-tab box-active">📜求人情報</li>
-    <li class="profile-tab">☆スカウト</li>
-    <li class="profile-tab">✉メッセージ</li>
-  </ul>
-  <div class="tabbox-contents">
-    <div class="tabbox box-show">
-      投稿した求人情報一覧
-      <% @job_informations.each do |job_information| %>
-        <div class="job_informations-box">
-          <%= link_to job_information.title, employer_job_information_path(job_information), class: "link-secondary" %><br>
-          勤務形態　　<%= job_information.work_style %><br>
-          給与　　　　<%= job_information.alarys %><br>
-          <%= @hospital.display_job_offer_status(job_information.job_offer_status) %>
+    <div class="profile">
+      <ul class="profile-list">
+        <li class="profile-tab box-active"><i class="far fa-copy"></i>求人情報</li>
+        <li class="profile-tab"><i class="fas fa-star"></i>スカウト</li>
+        <li class="profile-tab"><i class="fas fa-envelope"></i>メッセージ</li>
+      </ul>
+      <div class="tabbox-contents">
+        <div class="tabbox box-show">
+          <div class="d-flex align-items-center justify-content-center">
+          投稿した求人情報一覧
+          <%= link_to new_employer_job_information_path, class: "btn btn-secondary w-25 justify-content-center ml-lg-5" do %>
+            <i class="far fa-edit"></i>新規作成
+          <% end %>
+          </div>
+          <% @job_informations.each do |job_information| %>
+            <div class="job_informations-box">
+              <%= link_to job_information.title, employer_job_information_path(job_information), class: "link-secondary" %><br>
+              勤務形態　　<%= job_information.work_style %><br>
+              給与　　　　<%= job_information.alarys %><br>
+              <%= @hospital.display_job_offer_status(job_information.job_offer_status) %>
+              <!--display_job_offer_statusはモデルに定義　公開・非公開を文字化-->
+            </div>
+          <% end %>
+          <div class="d-flex align-items-center justify-content-center">
+            <%= paginate @job_informations %>
+          </div>
         </div>
-      <% end %>
-
-      <%= paginate @job_informations %>
-    </div>
-    <div class="tabbox">
-      <p>タブ2の中身が入ります。</p>
-      <p>タブ2の中身が入ります。</p>
-      <p>タブ2の中身が入ります。</p>
-    </div>
-    <div class="tabbox">
-      <p>タブ3の中身が入ります。</p>
-      <p>タブ3の中身が入ります。</p>
-      <p>タブ3の中身が入ります。</p>
+        <div class="tabbox">
+          <p>タブ2の中身が入ります。</p>
+          <p>タブ2の中身が入ります。</p>
+          <p>タブ2の中身が入ります。</p>
+        </div>
+        <div class="tabbox">
+          <p>タブ3の中身が入ります。</p>
+          <p>タブ3の中身が入ります。</p>
+          <p>タブ3の中身が入ります。</p>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
-</div>
 </div>
