@@ -1,3 +1,62 @@
 // Place all the styles related to the employer/hospitals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+* {
+  font-family: 'Yusei Magic', sans-serif;
+  // background-color: #FFCCCC;
+  color: #550000;
+}
+
+.profile {
+  margin: 10px;
+  border: 3px solid #550000;
+  border-radius: 30px;
+  background-color: #ffb2ad;
+}
+/* ↓タブを横並び↓ */
+.profile-list {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  list-style: none;
+}
+/* ↓タブのデザイン↓ */
+.profile-tab {
+  width: 100%;
+  padding: 10px;
+  margin: 0px 5px;
+  cursor: pointer;
+  border-left: solid 1px #550000;
+  border-bottom: solid 1px #550000;
+  border-radius: 20px;
+  background-color: #ffe4e1;
+}
+.profile-tab:first-child {
+  border-left: none;
+}
+/* ↓タブがアクティブになっている時のデザイン↓ */
+.profile-tab-active {
+  color: #fff;
+  background: #550000;
+  transition: all 0.2s ease-in-out;
+}
+/* ↓タブの中身↓ */
+.tabbox {
+  /* ↓タブの中身を最初は非表示↓ */
+  display: none;
+  /* ↓タブの中身の余白↓ */
+  padding: 15px;
+}
+/* ↓このクラスがついている時だけタブの中身を表示↓ */
+.box-show {
+  display: block;
+}
+
+.job_informations-box {
+  border-bottom: solid 1px #550000;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 10px;
+  padding: 0px 20px;
+}

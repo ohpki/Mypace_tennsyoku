@@ -1,5 +1,7 @@
 class Employer::HospitalsController < ApplicationController
   def show
+    @hospital = current_hospital
+    @job_informations = @hospital.job_informations
   end
 
   def edit
