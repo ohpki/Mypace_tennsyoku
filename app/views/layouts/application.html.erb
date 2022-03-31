@@ -20,8 +20,11 @@
     <%= render 'layouts/header' %>
     <main>
       <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "#{key}") %>
-  <% end %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <div class="notifications">
+       <div class="notice"></div>
+      </div>
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>

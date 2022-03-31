@@ -5,10 +5,18 @@ class Hospital < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :image
 
-  has_many :job_informations
-  has_many :scouts
-  has_many :notifications
-  has_many :chats
+  has_many :job_informations, dependent: :destroy
+  has_many :scouts, dependent: :destroy
+  has_many :notifications, dependent: :destroy
+  has_many :chat_rooms, dependent: :destroy
+
+  def display_job_offer_status(status)
+    if status == true
+      "公開中"
+    else
+      "非公開"
+    end
+  end
 
   def get_image(width, height)
     unless image.attached?

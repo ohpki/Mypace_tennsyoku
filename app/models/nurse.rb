@@ -4,10 +4,10 @@ class Nurse < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :image
-  has_many :favorites
-  has_many :subscriptions
-  has_many :chat_rooms
-  has_many :scouts
+  has_many :favorites, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
+  has_many :chat_rooms, dependent: :destroy
+  has_many :scouts, dependent: :destroy
 
   def get_image(width, height)
     unless image.attached?

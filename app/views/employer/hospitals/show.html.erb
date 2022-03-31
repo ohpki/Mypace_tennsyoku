@@ -1,2 +1,31 @@
-<h1>Employer::Hospitals#show</h1>
-<p>Find me in app/views/employer/hospitals/show.html.erb</p>
+
+
+<div class="profile">
+  <ul class="profile-list">
+    <li class="profile-tab box-active">📜求人情報</li>
+    <li class="profile-tab">☆スカウト</li>
+    <li class="profile-tab">✉メッセージ</li>
+  </ul>
+  <div class="tabbox-contents">
+    <div class="tabbox box-show">
+      <% @job_informations.each do |job_information| %>
+        <div class="job_informations-box">
+          <%= link_to job_information.title, employer_job_information_path(job_information), class: "link-secondary" %><br>
+          勤務形態　　<%= job_information.work_style %><br>
+          給与　　　　<%= job_information.alarys %><br>
+          <%= @hospital.display_job_offer_status(job_information.job_offer_status) %>
+        </div>
+      <% end %>
+    </div>
+    <div class="tabbox">
+      <p>タブ2の中身が入ります。</p>
+      <p>タブ2の中身が入ります。</p>
+      <p>タブ2の中身が入ります。</p>
+    </div>
+    <div class="tabbox">
+      <p>タブ3の中身が入ります。</p>
+      <p>タブ3の中身が入ります。</p>
+      <p>タブ3の中身が入ります。</p>
+    </div>
+  </div>
+</div>

@@ -13,12 +13,21 @@
       <%= @job_information.hospital.name %>
     </div>
     <div class="col-lg-8">
-      <%= @job_information.title %>
-      <%= @job_information.work_style %>
-      <%= @job_information.alarys %>
+      タイトル　　　<%= @job_information.title %><br>
+      勤務形態　　　<%= @job_information.work_style %><br>
+      給与　　　　　<%= @job_information.alarys %><br>
+      仕事内容・詳細<br>
       <%= @job_information.job_detail %>
-      <%= link_to "編集する", edit_employer_job_information_path, class: "btn btn-secondary w-50 mt-3" %>
-      <%= link_to "消去する", employer_hospitals_path, method: :delete, class: "btn btn-secondary w-50 mt-3" %>
     </div>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-4">
+        <% if @job_information.hospital_id == current_hospital.id %>
+          <%= link_to "編集する", edit_employer_job_information_path, class: "btn btn-secondary mt-3" %>
+          <%= link_to "消去する", employer_job_information_path(@job_information), method: :delete, data: { confirm: '削除しますか？' },  class: "btn btn-secondary mt-3" %>
+        <% end %>
+      </div>
+    </div>
+
+
   </div>
 </div>

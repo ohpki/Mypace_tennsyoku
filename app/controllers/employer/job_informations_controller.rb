@@ -13,22 +13,23 @@ class Employer::JobInformationsController < ApplicationController
   end
 
   def index
-
+    @job_informations = current_hospital.job_informations
   end
 
   def show
     @job_information = JobInformation.find(params[:id])
-    
+
   end
 
   def edit
     @job_information = JobInformation.find(params[:id])
+    @hospital = current_hospital
   end
 
   def update
     @job_information = JobInformation.find(params[:id])
     if @job_information.update(job_information_params)
-      redirect_to employer_job_information_path(@job_information)
+      redirect_to employer_job_information_path(@job_information), notice: "求人情報が更新されました"
     else
       render :edit
     end
@@ -38,7 +39,8 @@ class Employer::JobInformationsController < ApplicationController
   def destroy
     @job_information = JobInformation.find(params[:id])
     @job_information.destroy
-    redirect_to employer_hospitals_path
+    redirect_to employer_hospitals_path, notice: "求人情報は消去されました"
+
   end
   private
 

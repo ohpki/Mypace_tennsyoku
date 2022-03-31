@@ -1,2 +1,14 @@
-<h1>Employer::JobInformations#edit</h1>
-<p>Find me in app/views/employer/job_informations/edit.html.erb</p>
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center justify-content-center mt-7">
+          <h2>求人情報変更</h2>
+        </div>
+      </div>
+    </div>
+    <%= render "form", job_information: @job_information, hospital: @hospital, btn: "update" %>
+     <!--btn = "update"でformのボタンを"更新"で表示-->
+  </div>
+</div>
+
