@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class Worker::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_permitted_parameters, only: [:create]
+
+
+
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :first_name, :last_name, :nickname, :first_name_kana, :last_name_kana, :image, :job_detail])
+  end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -59,5 +67,11 @@ class Worker::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
+  def after_sign_up_path_for(resource)
+    worker_job_informations_path
+  end
+
+  def after_update_path_for(resource)
+    worker_nurses_path
+  end
 end

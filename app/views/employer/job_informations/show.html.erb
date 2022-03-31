@@ -1,2 +1,24 @@
-<h1>Employer::JobInformations#show</h1>
-<p>Find me in app/views/employer/job_informations/show.html.erb</p>
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center justify-content-center mt-7">
+          <h2>求人情報詳細</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 ml-auto">
+      <%= image_tag @job_information.hospital.get_image(250, 150), size: '200x130'%><br>
+      病院名
+      <%= @job_information.hospital.name %>
+    </div>
+    <div class="col-lg-8">
+      <%= @job_information.title %>
+      <%= @job_information.work_style %>
+      <%= @job_information.alarys %>
+      <%= @job_information.job_detail %>
+      <%= link_to "編集する", edit_employer_job_information_path, class: "btn btn-secondary w-50 mt-3" %>
+      <%= link_to "消去する", employer_hospitals_path, method: :delete, class: "btn btn-secondary w-50 mt-3" %>
+    </div>
+  </div>
+</div>
