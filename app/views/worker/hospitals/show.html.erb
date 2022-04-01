@@ -20,12 +20,16 @@
     <div class="row align-items-center justify-content-center">
       <div class="col-lg-6 ml-auto">
         <%= link_to "戻る", :back, class: "btn btn-secondary mt-3 mr-3" %>
-        <%= form_with model:@chat_room, url: chat_rooms_path, method: :post do |f| %>
-          <%= f.hidden_field :hospital_id, :value => @hospital.id %>
-          <%= f.hidden_field :nurse_id, :value => current_nurse.id %>
-        <%= f.submit "メッセージを送る", class: "btn btn-danger mt-3" %>
+        <% @chat_room = ChatRoom.find_by(hospital_id: @hospital.id, nurse_id: current_nurse.id) %>
+        <% if @chat_room.nil? %>
+          <%= form_with model:ChatRoom.new, url: chat_rooms_path, method: :post do |f| %>
+            <%= f.hidden_field :hospital_id, :value => @hospital.id %>
+            <%= f.hidden_field :nurse_id, :value => current_nurse.id %>
+          <%= f.submit "メッセージを送る", class: "btn btn-danger mt-3" %>
+          <% end %>
+        <% else %>
+          <%= link_to "メッセージを送る", chat_room_chats_path(@chat_room), class: "btn btn-danger mt-3" %>
         <% end %>
-        <%= link_to "メッセージを送る", chat_rooms_path, class: "btn btn-danger mt-3" %>
       </div>
     </div>
 </div>

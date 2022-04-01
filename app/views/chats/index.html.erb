@@ -1,46 +1,95 @@
-<h1>Chats#index</h1>
-<p>Find me in app/views/chats/index.html.erb</p>
-<!--メッセージの送り手が看護師の場合sender == true、病院の場合sender == false-->
-<!--自分が送った方のメッセージを右寄せ-->
-<% @chats.each do |chat| %>
+<div class="container">
   <div class="row align-items-center justify-content-center">
-    <% if nurse_signed_in? %>
-      <% if chat.sender == true %>
-        <div class="col-6 ml-auto">
-          <%= chat.message %>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="d-flex align-items-center justify-content-center mt-7">
+          <% if nurse_signed_in? %>
+            <h2><%= @chat_room.hospital.name %>さんとのメッセージ</h2>
+          <% elsif hospital_signed_in? %>
+            <h2><%= @chat_room.nurse.nickname %>さんとのメッセージ</h2>
+          <% end %>
         </div>
-      <% else %>
-        <div class="col-6 mr-auto">
-          <%= chat.message %>
+      </div>
+    </div>
+      <!--メッセージの送り手が看護師の場合sender == true、病院の場合sender == false-->
+      <!--自分が送った方のメッセージを右寄せ-->
+      <% @chats.each do |chat| %>
+        <div class="row align-items-center justify-content-center">
+          <% if nurse_signed_in? %>
+            <% if chat.sender == true %>
+              <div class="col-7">
+                <div class="my_message">
+                <%= chat.message %>
+                  <div class="my_down_triangle">
+                    ▶
+                  </div>
+                </div>
+                <div class="col-6 ml-auto">
+                <%= chat.created_at %>
+                <%= image_tag current_nurse.get_image(40,40), class: "rounded-circle" %></div>
+              </div>
+            <% else %>
+              <div class="col-7">
+                <div class="your_message">
+                  <%= chat.message %>
+                </div>
+                <div class="your_down_triangle">
+                    ▶
+                </div>
+                <div class="col-6">
+                <%= chat.created_at %>
+                <%= image_tag current_hospital.get_image(40,40), class: "rounded-circle" %>
+                </div>
+              </div>
+            <% end %>
+          <% elsif hospital_signed_in? %>
+              <% if chat.sender == false %>
+                <div class="col-7">
+                  <div class="my_message">
+                    <%= chat.message %>
+                  </div>
+                  <div class="my_down_triangle">
+                    ◀
+                  </div>
+                  <div class="col-6 ml-auto">
+                    <%= chat.created_at %>
+                    <%= image_tag current_hospital.get_image(40,40), class: "rounded-circle" %>
+                  </div>
+                </div>
+              <% else %>
+                <div class="col-7">
+                  <div class="your_message">
+                    <%= chat.message %>
+                  </div>
+                  <div class="your_down_triangle">
+                    ◀
+                  </div>
+                  <div class="col-6">
+                    <%= chat.created_at %>
+                    <%= image_tag current_hospital.get_image(40,40), class: "rounded-circle" %>
+                  </div>
+                </div>
+              <% end %>
+          <% end %>
         </div>
       <% end %>
-    <% elsif hospital_signed_in? %>
-        <% if chat.sender == false %>
-          <div class="col-6 ml-auto">
-            <%= chat.message %>
-          </div>
-        <% else %>
-          <div class="col-6 mr-auto">
-            <%= chat.message %>
-          </div>
+      <%= form_with model:@chat, methot: :post, url: chat_room_chats_path(params[:chat_room_id]), local: true do |f| %>
+        <% if nurse_signed_in? %>
+          <%= f.hidden_field :sender, value: :true %>
+        <% elsif %>
+          <%= f.hidden_field :sender, value: :false %>
         <% end %>
-    <% end %>
-  </div>
-<% end %>
-<%= form_with model:@chat, methot: :post, url: chat_room_chats_path(params[:chat_room_id]), local: true do |f| %>
-  <% if nurse_signed_in? %>
-    <%= f.hidden_field :sender, value: :true %>
-  <% elsif %>
-    <%= f.hidden_field :sender, value: :false %>
-  <% end %>
-  <div class="row align-items-center justify-content-center">
-    <div class="col-8">
-      <%= f.text_field :message, class:"form-control" %>
+        <div class="row align-items-center justify-content-center">
+          <div class="col-8">
+            <%= f.text_field :message, class:"form-control" %>
 
-    </div>
-    <div class="col-2">
-      <%= f.submit "送信" %>
-    </div>
-  </div>
+          </div>
+          <div class="col-2">
+            <%= f.submit "送信" %>
+          </div>
+          <div
+        </div>
 
-<% end %>
+      <% end %>
+  </div>
+</div>
