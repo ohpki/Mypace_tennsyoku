@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'homes/confirm'
   resources :notifications, only: [:new, :create, :index, :edit]
   resources :chats, only: [:new, :create, :index]
-  resources :chats, only: [:new, :create, :index, :show]
+  resources :chat_rooms, only: [:new, :create, :index, :show]
 
   namespace :employer do
     resources :nurses, only: [:show, :index]
