@@ -24,6 +24,7 @@
           <%= f.hidden_field :hospital_id, :value => @hospital.id %>
           <%= f.hidden_field :nurse_id, :value => current_nurse.id %>
         <%= f.submit "メッセージを送る", class: "btn btn-danger mt-3" %>
+        <% end %>
         <%= link_to "メッセージを送る", chat_rooms_path, class: "btn btn-danger mt-3" %>
       </div>
     </div>

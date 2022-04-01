@@ -1,2 +1,46 @@
 <h1>Chats#index</h1>
 <p>Find me in app/views/chats/index.html.erb</p>
+<!--メッセージの送り手が看護師の場合sender == true、病院の場合sender == false-->
+<!--自分が送った方のメッセージを右寄せ-->
+<% @chats.each do |chat| %>
+  <div class="row align-items-center justify-content-center">
+    <% if nurse_signed_in? %>
+      <% if chat.sender == true %>
+        <div class="col-6 ml-auto">
+          <%= chat.message %>
+        </div>
+      <% else %>
+        <div class="col-6 mr-auto">
+          <%= chat.message %>
+        </div>
+      <% end %>
+    <% elsif hospital_signed_in? %>
+        <% if chat.sender == false %>
+          <div class="col-6 ml-auto">
+            <%= chat.message %>
+          </div>
+        <% else %>
+          <div class="col-6 mr-auto">
+            <%= chat.message %>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
+<% end %>
+<%= form_with model:@chat, methot: :post, url: chat_room_chats_path(params[:chat_room_id]), local: true do |f| %>
+  <% if nurse_signed_in? %>
+    <%= f.hidden_field :sender, value: :true %>
+  <% elsif %>
+    <%= f.hidden_field :sender, value: :false %>
+  <% end %>
+  <div class="row align-items-center justify-content-center">
+    <div class="col-8">
+      <%= f.text_field :message, class:"form-control" %>
+
+    </div>
+    <div class="col-2">
+      <%= f.submit "送信" %>
+    </div>
+  </div>
+
+<% end %>

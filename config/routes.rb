@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   get 'homes/hospital'
   get 'homes/confirm'
   resources :notifications, only: [:new, :create, :index, :edit]
-  resources :chats, only: [:new, :create, :index]
-  resources :chat_rooms, only: [:new, :create, :index, :show]
-
+  resources :chat_rooms, only: [:new, :create, :index, :show] do
+    resources :chats, only: [:new, :create, :index]
+  end
   namespace :employer do
     resources :nurses, only: [:show, :index]
     resource :hospitals, only: [:show, :index, :edit, :update, :destroy]
@@ -31,9 +31,8 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:new, :create, :show, :index, :edit, :update, :destroy]
     resources :hospitals, only: [:show]
     resource :nurses, only: [:show, :edit, :update, :destroy]
-
     resources :job_informations, only: [:index, :show] do
-    resources :favorites, only: [:new, :create, :index, :destroy]
+      resources :favorites, only: [:new, :create, :index, :destroy]
     end
 
   end
