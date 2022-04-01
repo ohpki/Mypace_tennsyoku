@@ -1,10 +1,64 @@
 <div class="container">
-  <div class="row">
-    <div class="col-3">
-      左側
+  <div class="row align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center justify-content-center mt-7">
+          <h2>マイページ</h2>
+        </div>
+      </div>
     </div>
-    <div class="col-7">
-      右側
+    <div class="col-lg-3 ml-auto">
+      <%= image_tag @nurse.get_image(300, 240), class: "rounded-circle" %><br>
+      <h4><%= @nurse.nickname %></h4>
+      <%= link_to "編集する", edit_worker_nurses_path, class: "btn btn-secondary w-75 mt-3" %>
+    </div>
+    <div class="col-lg-8 ml-auto">
+
+    <div class="profile">
+      <ul class="profile-list">
+        <li class="profile-tab box-active"><i class="far fa-copy"></i>応募した求人</li>
+        <li class="profile-tab"><i class="fas fa-star"></i>お気に入り</li>
+        <li class="profile-tab"><i class="fas fa-envelope"></i>メッセージ</li>
+      </ul>
+      <div class="tabbox-contents">
+        <div class="tabbox box-show">
+          <div class="d-flex align-items-center justify-content-center">
+          応募した求人情報一覧
+          </div>
+          <% @subscriptions.each do |subscription| %>
+            <div class="job_informations-box">
+              <% @job_information = JobInformation.find_by(id: subscription.job_information_id) %>
+              <%= link_to @job_information.title, worker_job_information_path(@job_information), class: "link-secondary" %><br>
+              勤務形態　　<%= @job_information.work_style %><br>
+              給与　　　　<%= @job_information.alarys %><br>
+              住所　　　　<%= @job_information.address %>
+            </div>
+          <% end %>
+          <div class="d-flex align-items-center justify-content-center">
+            <%= paginate @subscriptions %>
+          </div>
+        </div>
+        <div class="tabbox">
+          <div class="d-flex align-items-center justify-content-center">
+            お気に入りした求人情報一覧
+          </div>
+          <% @favorites.each do |favorite| %>
+            <div class="job_informations-box">
+              <% @job_information = JobInformation.find_by(id: favorite.job_information_id) %>
+              <%= link_to @job_information.title, worker_job_information_path(@job_information), class: "link-secondary" %><br>
+              勤務形態　　<%= @job_information.work_style %><br>
+              給与　　　　<%= @job_information.alarys %><br>
+              住所　　　　<%= @job_information.address %>
+            </div>
+          <% end %>
+        </div>
+        <div class="tabbox">
+          <p>タブ3の中身が入ります。</p>
+          <p>タブ3の中身が入ります。</p>
+          <p>タブ3の中身が入ります。</p>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 </div>

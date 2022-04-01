@@ -4,6 +4,7 @@ class Worker::JobInformationsController < ApplicationController
   end
   def show
     @job_information = JobInformation.find(params[:id])
+    @favorite = Favorite.new
     if @subscription = current_nurse.subscriptions.find_by(job_information_id: @job_information)
     else
       @subscription = Subscription.new

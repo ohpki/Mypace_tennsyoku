@@ -19,12 +19,8 @@
         <%= f.label :job_offer_status, "非公開", {value: :false, style: "display: inline-block;"} %>　※非公開にすると一覧画面に表示されなくなります。<br>
         <%= f.hidden_field :hospital_name, :value => hospital.name %>
         <%= f.hidden_field :address, :value => hospital.address %>
-        <% if local_assigns[:edit_flag].present? %>
-          <%= f.submit "作成", class: "btn btn-secondary w-50 mt-3" %>
-        <% else %>
-          <%= f.submit "更新", class: "btn btn-secondary w-50 mt-3" %>
-        <% end %>
-        </div>　
+
+        </div>
 
 
 

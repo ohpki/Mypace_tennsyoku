@@ -31,7 +31,7 @@ class Worker::SubscriptionsController < ApplicationController
   def destroy
     @subscription = Subscription.find(params[:id])
     if @subscription.destroy
-      redirect_to worker_job_informations_path, notice: "応募を取り消しました"
+      redirect_to worker_nurses_path, notice: "応募を取り消しました"
     else
       redirect_back(fallback_location: root_path, notice: "取り消しに失敗しました")
     end
