@@ -20,7 +20,11 @@
     <div class="row align-items-center justify-content-center">
       <div class="col-lg-6 ml-auto">
         <%= link_to "戻る", :back, class: "btn btn-secondary mt-3 mr-3" %>
-        <%= link_to "メッセージを送る", employer_hospitals_quit_path, class: "btn btn-danger mt-3" %>
+        <%= form_with model:@chat_room, url: chat_rooms_path, method: :post do |f| %>
+          <%= f.hidden_field :hospital_id, :value => @hospital.id %>
+          <%= f.hidden_field :nurse_id, :value => current_nurse.id %>
+        <%= f.submit "メッセージを送る", class: "btn btn-danger mt-3" %>
+        <%= link_to "メッセージを送る", chat_rooms_path, class: "btn btn-danger mt-3" %>
       </div>
     </div>
 </div>
