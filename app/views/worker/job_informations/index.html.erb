@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center justify-content-center mt-7">
+          <h2>求人情報一覧(全<%= @job_informations.count %>件)</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-11">
+      <% @job_informations.each do |job_information| %>
+        <div class="job_informations-box">
+          <%= link_to job_information.title, worker_job_information_path(job_information), class: "link-secondary" %><br>
+          勤務形態　　<%= job_information.work_style %><br>
+          給与　　　　<%= job_information.alarys %><br>
+          住所　　　　<%= job_information.hospital.address %>
+        </div>
+      <% end %>
+      <div class="d-flex align-items-center justify-content-center">
+        <%= paginate @job_informations %>
+      </div>
+    </div>
+  </div>
+</div>
