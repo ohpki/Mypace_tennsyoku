@@ -10,6 +10,7 @@
     <div class="col-lg-11">
       <% @job_informations.each do |job_information| %>
         <div class="job_informations-box">
+          <%= image_tag job_information.hospital.get_image(150, 90) %>
           <%= link_to job_information.title, worker_job_information_path(job_information), class: "link-secondary" %><br>
           勤務形態　　<%= job_information.work_style %><br>
           給与　　　　<%= job_information.alarys %><br>

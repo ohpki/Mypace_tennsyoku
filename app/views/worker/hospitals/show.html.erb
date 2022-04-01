@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="d-flex align-items-center justify-content-center mt-7">
+          <h2>プロフィール編集</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-8 col-sm-4 col-md-4">
+      <%= image_tag @hospital.get_image(300, 240) %><br>
+    </div>
+    <div class="col-xs-8 col-sm-5 col-md-6">
+        病院名　　<%= @hospital.name %><br>
+        郵便番号　<%= @hospital.postal_code %><br>
+        住所　　　<%= @hospital.address %><br>
+        電話番号　<%=@hospital.phone_number %><br>
+        紹介文　　<%= @hospital.Introduction %><br>
+    </div>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-6 ml-auto">
+        <%= link_to "戻る", :back, class: "btn btn-secondary mt-3 mr-3" %>
+        <%= link_to "メッセージを送る", employer_hospitals_quit_path, class: "btn btn-danger mt-3" %>
+      </div>
+    </div>
+</div>

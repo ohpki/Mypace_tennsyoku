@@ -4,13 +4,19 @@
       <div class="col-12">
         <div class="d-flex align-items-center justify-content-center mt-7">
           <h2>求人情報詳細</h2>
+          <div id="favorite_btn_<%= @job_information.id %>">
+　　　    <%= render "worker/favorites/favorite-btn", job_information: @job_information %>
+　　      </div>
         </div>
       </div>
     </div>
     <div class="col-lg-3 ml-auto">
       <%= image_tag @job_information.hospital.get_image(250, 150), size: '200x130'%><br>
       病院名
-      <%= @job_information.hospital.name %>
+      <%= link_to worker_hospital_path(@job_information.hospital_id), class: "link-secondary" do %>
+        <%= @job_information.hospital.name %>
+        <% hidden_field_tag :hospital_id, @job_information.hospital_id %>
+      <% end %>
     </div>
     <div class="col-lg-8">
       タイトル　　　<%= @job_information.title %><br>

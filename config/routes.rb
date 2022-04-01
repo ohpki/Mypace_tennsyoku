@@ -31,8 +31,10 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:new, :create, :show, :index, :edit, :update, :destroy]
     resources :hospitals, only: [:show]
     resource :nurses, only: [:show, :edit, :update, :destroy]
+
+    resources :job_informations, only: [:index, :show] do
     resources :favorites, only: [:new, :create, :index, :destroy]
-    resources :job_informations, only: [:index, :show]
+    end
 
   end
 
