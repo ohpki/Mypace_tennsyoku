@@ -1,5 +1,6 @@
 class Worker::SubscriptionsController < ApplicationController
   before_action :authenticate_nurse!
+  
   def new
     @subscription = Subscription.new
     @job_information = params[:subscription][:job_information_id]
