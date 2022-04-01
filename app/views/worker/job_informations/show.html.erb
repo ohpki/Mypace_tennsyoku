@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center justify-content-center mt-7">
+          <h2>求人情報詳細</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 ml-auto">
+      <%= image_tag @job_information.hospital.get_image(250, 150), size: '200x130'%><br>
+      病院名
+      <%= @job_information.hospital.name %>
+    </div>
+    <div class="col-lg-8">
+      タイトル　　　<%= @job_information.title %><br>
+      勤務形態　　　<%= @job_information.work_style %><br>
+      給与　　　　　<%= @job_information.alarys %><br>
+      仕事内容・詳細<br>
+      <%= @job_information.job_detail %><br>
+      更新日:　<%= @job_information.updated_at.strftime('%Y/%m/%d') %>
+    </div>
+    <div class="row align-items-center justify-content-center">
+      <% if nurse_signed_in? %>
+        <% if @subscription.job_information_id == @job_information.id %>
+          <div class="col-lg-3">
+          <%= link_to "応募を取り消す", worker_subscription_path(@subscription.id), method: :delete, class: "btn btn-secondary mt-3" %>
+        <% else %>
+          <div class="col-lg-2">
+            <%= form_with model:@subscription, url: new_worker_subscription_path, method: :get, local: true do |f| %>
+              <%= f.hidden_field :job_information_id, :value => @job_information.id %>
+              <%= f.submit "応募する", class: "btn btn-secondary mt-3" %>
+            <% end %>
+        <% end %>
+      </div>
+      <div class="col-lg-2">
+        <%= link_to "通報する", root_path, class: "btn btn-secondary mt-3" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
