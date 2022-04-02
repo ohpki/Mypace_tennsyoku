@@ -4,11 +4,16 @@
       <div class="col-12">
         <div class="d-flex align-items-center justify-content-center mt-7">
           <h2>求人情報詳細</h2>
+          <%= if @job_information.hospital_id == current_hospital %>
+            <%= link_to "応募一覧" employer_subscriptions_index_path, class: "btn btn-secondary ml-sm-5" %>
+            <%= hidden_field_tag :job_information_id, value: :@job_information.id %>
+
+          <% end %>
         </div>
       </div>
     </div>
     <div class="col-lg-3 ml-auto">
-      <%= image_tag @job_information.hospital.get_image(250, 150), size: '200x130'%><br>
+      <%= image_tag @job_information.hospital.get_image(250, 150) %><br>
       病院名
       <%= @job_information.hospital.name %>
     </div>

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="d-flex align-items-center justify-content-center mt-7">
-          <h2>プロフィール編集</h2>
+          <h2><%= @hospital.name %>　プロフィール</h2>
         </div>
       </div>
     </div>
@@ -18,17 +18,19 @@
         紹介文　　<%= @hospital.Introduction %><br>
     </div>
     <div class="row align-items-center justify-content-center">
-      <div class="col-lg-6 ml-auto">
+      <div class="col-lg-3 ml-auto">
         <%= link_to "戻る", :back, class: "btn btn-secondary mt-3 mr-3" %>
         <% @chat_room = ChatRoom.find_by(hospital_id: @hospital.id, nurse_id: current_nurse.id) %>
         <% if @chat_room.nil? %>
+        </div>
+        <div class="col-lg-3 mr-auto">
           <%= form_with model:ChatRoom.new, url: chat_rooms_path, method: :post do |f| %>
             <%= f.hidden_field :hospital_id, :value => @hospital.id %>
             <%= f.hidden_field :nurse_id, :value => current_nurse.id %>
-          <%= f.submit "メッセージを送る", class: "btn btn-danger mt-3" %>
-          <% end %>
+          <%= f.submit "メッセージを送る", class: "btn btn-secondary mt-3" %>
+          <% end %></div>
         <% else %>
-          <%= link_to "メッセージを送る", chat_room_chats_path(@chat_room), class: "btn btn-danger mt-3" %>
+          <%= link_to "メッセージを送る", chat_room_chats_path(@chat_room), class: "btn btn-secondary mt-3" %>
         <% end %>
       </div>
     </div>

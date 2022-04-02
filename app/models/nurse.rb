@@ -16,4 +16,11 @@ class Nurse < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+  def nickname_or_name_display
+    
+  end
+
+  def full_name_display
+    self.first_name + self.last_name
+  end
 end
