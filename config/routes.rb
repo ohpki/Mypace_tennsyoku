@@ -19,10 +19,12 @@ Rails.application.routes.draw do
     resources :chats, only: [:new, :create, :index]
   end
   namespace :employer do
-    resources :nurses, only: [:show, :index]
+    resources :nurses, only: [:show, :index] do
+      resources :scouts, only: [:new, :index, :create, :destroy]
+    end
     resource :hospitals, only: [:show, :index, :edit, :update, :destroy]
     get 'hospitals/quit'
-    resources :scouts, only: [:new, :index, :create, :destroy]
+
     resources :job_informations, only: [:new, :create, :show, :index, :edit, :update, :destroy]
     get 'subscriptions/index'
   end
@@ -31,6 +33,7 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:new, :create, :show, :index, :edit, :update, :destroy]
     resources :hospitals, only: [:show]
     resource :nurses, only: [:show, :edit, :update, :destroy]
+    get 'nurses/quit'
     resources :job_informations, only: [:index, :show] do
       resources :favorites, only: [:new, :create, :index, :destroy]
     end

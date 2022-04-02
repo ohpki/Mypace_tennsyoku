@@ -10,6 +10,7 @@
 
           <div class="field">
           <div class="row form-group mt-4">
+
             <%= f.label :"名前", class:"col-md-3 col-form-label text-md-right fw-bold" %>
             <%= f.label :"(姓)", class:"col-md-1 col-form-label text-md-right fw-bold" %>
           <div class="col-md-3 px-md-0">
@@ -32,6 +33,11 @@
           <div class="col-md-3 px-md-0">
             <%= f.text_field :last_name_kana, placeholder: "ケイコ", class:"form-control" %>
           </div>
+          </div>
+          <div class="row form-group mt-2">
+            <%= f.label :"住所(在住している県名のみでも可)", class:"col-md-4 col-form-label text-md-right fw-bold" %>
+          <div class="col-md-7 px-md-0">
+            <%= f.text_field :address, placeholder: "東京都", class:"form-control" %>
           </div>
           <div class="row form-group mt-2">
             <%= f.label :"メールアドレス", class:"col-md-4 col-form-label text-md-right fw-bold" %>

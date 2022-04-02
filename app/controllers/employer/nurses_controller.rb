@@ -3,6 +3,7 @@ class Employer::NursesController < ApplicationController
 
   def show
     @nurse = Nurse.find(params[:id])
+    @scout = Scout.new
   end
 
   def index

@@ -5,6 +5,7 @@ class Employer::HospitalsController < ApplicationController
 
   def show
     @job_informations = @hospital.job_informations.order(created_at: :desc).page(params[:page]).per(3)
+    @scouts = @hospital.scouts.order(created_at: :desc).page(params[:page]).per(3)
   end
 
   def edit

@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2022_03_29_114840) do
   create_table "nurses", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.boolean "display_name_select", default: false
     t.string "nickname"
     t.string "first_name"
     t.string "last_name"

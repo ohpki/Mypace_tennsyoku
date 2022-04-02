@@ -6,7 +6,7 @@ class DeviseCreateNurses < ActiveRecord::Migration[6.1]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-
+      t.boolean :display_name_select, default: "false"
       t.string :nickname
       t.string :first_name
       t.string :last_name
