@@ -1,7 +1,4 @@
 class ChatsController < ApplicationController
-  # before_action ->{
-  #   authenticate_nurse! || authenticate_hospital!
-  # }
 
   def index
     @chat_room = ChatRoom.find(params[:chat_room_id])
@@ -14,9 +11,6 @@ class ChatsController < ApplicationController
     @chat.chat_room_id = params[:chat_room_id]
     @chat.save
     redirect_to chat_room_chats_path(params[:chat_room_id])
-  end
-
-  def new
   end
 
   private

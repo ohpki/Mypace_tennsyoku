@@ -1,12 +1,5 @@
 class ChatRoomsController < ApplicationController
-  def show
-  end
-
-  def index
-    
-
-  end
-
+  
   def create
     @chat_room = ChatRoom.new(chat_room_params)
     @chat_room.save

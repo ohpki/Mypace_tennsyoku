@@ -1,72 +1,76 @@
 <div class="container">
   <div class="row align-items-center justify-content-center">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="d-flex align-items-center justify-content-center mt-7">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-6">
+
           <% if nurse_signed_in? %>
             <h2><%= @chat_room.hospital.name %>さんとのメッセージ</h2>
           <% elsif hospital_signed_in? %>
-            <h2><%= @chat_room.nurse.nickname %>さんとのメッセージ</h2>
+            <h2><%= @chat_room.nurse.display_name(@chat_room.nurse) %>さんとのメッセージ</h2>
           <% end %>
-        </div>
+
       </div>
     </div>
       <!--メッセージの送り手が看護師の場合sender == true、病院の場合sender == false-->
-      <!--自分が送った方のメッセージを右寄せ-->
+      <!--true、false自分が送った方のメッセージを判断し右寄せにする-->
       <% @chats.each do |chat| %>
         <div class="row align-items-center justify-content-center">
           <% if nurse_signed_in? %>
             <% if chat.sender == true %>
-              <div class="col-7">
+            <!--自分は看護師で、自分が送ったメッセージのため右寄せ-->
+              <div class="col-10 ml-auto">
                 <div class="my_message">
                 <%= chat.message %>
                   <div class="my_down_triangle">
                     ▶
                   </div>
                 </div>
-                <div class="col-6 ml-auto">
+                <div class="col-10 ml-auto">
                 <%= chat.created_at %>
                 <%= image_tag current_nurse.get_image(40,40), class: "rounded-circle" %></div>
               </div>
             <% else %>
-              <div class="col-7">
+            <!--自分は看護師で、相手の病院が送ったメッセージのため左寄せ-->
+              <div class="col-10 mr-auto">
                 <div class="your_message">
                   <%= chat.message %>
+                  <div class="your_down_triangle">
+                      ◀
+                  </div>
                 </div>
-                <div class="your_down_triangle">
-                    ▶
-                </div>
-                <div class="col-6">
+                <div class="col-10 mr-auto">
                 <%= chat.created_at %>
-                <%= image_tag current_hospital.get_image(40,40), class: "rounded-circle" %>
+                <%= image_tag @chat_room.hospital.get_image(40,40), class: "rounded-circle" %>
                 </div>
               </div>
             <% end %>
           <% elsif hospital_signed_in? %>
+          <!--自分は病院で、自分が送ったメッセージのため右寄せ-->
               <% if chat.sender == false %>
-                <div class="col-7">
+                <div class="col-10 ml-auto">
                   <div class="my_message">
                     <%= chat.message %>
+                    <div class="my_down_triangle">
+                      ▶
+                    </div>
                   </div>
-                  <div class="my_down_triangle">
-                    ◀
-                  </div>
-                  <div class="col-6 ml-auto">
+                  <div class="col-10 ml-auto">
                     <%= chat.created_at %>
                     <%= image_tag current_hospital.get_image(40,40), class: "rounded-circle" %>
                   </div>
                 </div>
               <% else %>
-                <div class="col-7">
+              <!--自分は病院で、相手の看護師が送ったメッセージのため左寄せ-->
+                <div class="col-10 mr-auto">
                   <div class="your_message">
                     <%= chat.message %>
+                    <div class="your_down_triangle">
+                      ◀
+                    </div>
                   </div>
-                  <div class="your_down_triangle">
-                    ◀
-                  </div>
-                  <div class="col-6">
+                  <div class="col-10 mr-auto">
                     <%= chat.created_at %>
-                    <%= image_tag current_hospital.get_image(40,40), class: "rounded-circle" %>
+                    <%= image_tag @chat_room.nurse.get_image(40,40), class: "rounded-circle" %>
                   </div>
                 </div>
               <% end %>
@@ -87,9 +91,7 @@
           <div class="col-2">
             <%= f.submit "送信" %>
           </div>
-          <div
         </div>
-
       <% end %>
   </div>
 </div>
