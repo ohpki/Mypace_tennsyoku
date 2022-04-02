@@ -12,7 +12,7 @@ class DeviseCreateNurses < ActiveRecord::Migration[6.1]
       t.string :last_name
       t.string :first_name_kana
       t.string :last_name_kana
-      t.string :addres
+      t.string :address
       t.string :qualification
       t.boolean :job_seeking_status, default: "true"
       t.string :birthday

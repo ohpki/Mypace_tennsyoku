@@ -9,6 +9,8 @@
     </div>
     <div class="col-lg-3 ml-auto">
       <%= image_tag @nurse.get_image(300, 240), class: "rounded-circle" %><br>
+      
+        
       <h4><%= @nurse.nickname %></h4>
       <%= link_to "編集する", edit_worker_nurses_path, class: "btn btn-secondary w-75 mt-3" %>
     </div>
@@ -65,11 +67,35 @@
               </div>
              </div>
           <% end %>
+          <div class="d-flex align-items-center justify-content-center">
+            <%= paginate @favorites %>
+          </div>
         </div>
         <div class="tabbox">
-          <p>タブ3の中身が入ります。</p>
-          <p>タブ3の中身が入ります。</p>
-          <p>タブ3の中身が入ります。</p>
+          <div class="d-flex align-items-center justify-content-center">
+            メッセージ一覧
+          </div>
+          <div class="job_informations-box">
+            <% @chat_rooms.each do |chat_room| %>
+            <div class="row p-1">
+              <div class="col-sx-10 col-sm-3">
+                <%= image_tag chat_room.hospital.get_image(80, 55) %><br>
+                <%= link_to chat_room_chats_path(chat_room), class: "text-dark" do %>
+                  <%= chat_room.hospital.name %>
+                <% end %>
+              </div>
+              <div class="col-sx-10 col-sm-7">
+                <% @chats = chat_room.chats %>
+                <% @chat = chat_room.chats.order(created_at: :desc).first %>
+                <%= @chat.message.truncate(50) %>
+                <%= @chat.created_at %>
+              </div>
+            <% end %>
+          <div class="d-flex align-items-center justify-content-center">
+            <%= paginate @chat_rooms %>
+          </div>
+          </div>
+
         </div>
       </div>
       </div>

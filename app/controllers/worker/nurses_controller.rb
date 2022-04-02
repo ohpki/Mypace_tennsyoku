@@ -5,6 +5,7 @@ class Worker::NursesController < ApplicationController
   def show
     @subscriptions = @nurse.subscriptions.order(created_at: :desc).page(params[:page]).per(3)
     @favorites = @nurse.favorites.order(created_at: :desc).page(params[:page]).per(3)
+    @chat_rooms = current_nurse.chat_rooms.order(created_at: :desc).page(params[:page]).per(3)
   end
   def edit
   end

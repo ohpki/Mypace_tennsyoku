@@ -2,11 +2,12 @@
 
 class Worker::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-
-
-
-
+def create
+  @nurse = Nurse.new(nurse_params)
+  @nurse.nickname = params[:first_name]
+  @nurse.save
+  redirect_to worker_job_informations_path
+end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -46,13 +47,17 @@ class Worker::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
 
+  def nurse_params
+    params.require(:nurse).permit(:name, :first_name, :last_name, :first_name_kana, :last_name_kana, :image, :job_detail, :email, :password, :password_confirmation)
+  end
+
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :first_name, :last_name, :nickname, :first_name_kana, :last_name_kana, :image, :job_detail])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :first_name, :last_name, :first_name_kana, :last_name_kana, :image, :job_detail])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :first_name, :last_name, :nickname, :first_name_kana, :last_name_kana, :image, :job_detail])
   end
   # If you have extra params to permit, append them to the sanitizer.
