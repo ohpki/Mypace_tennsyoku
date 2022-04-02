@@ -1,0 +1,7 @@
+<% if hospital_signed_in? %>
+  <% if nurse.scouts.find_by(hospital_id: current_hospital.id).nil? %>
+    <%= link_to "スカウトする", employer_nurse_scouts_path(nurse), method: :post, class: "btn btn-secondary" %>
+  <% else %>
+    <%= link_to "スカウトを取り消す", employer_nurse_scout_path(nurse), method: :delete, class: "btn btn-secondary" %>
+  <% end %>
+<% end %>

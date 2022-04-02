@@ -1,11 +1,11 @@
 <% if nurse_signed_in? %>
-            <% if job_information.favorites.find_by(nurse_id: current_nurse.id).nil? %>
-              <%= link_to worker_job_information_favorites_path(job_information), method: :post do %>
-              <i class="far fa-star"></i>
-              <% end %>
-            <% else %>
-              <%= link_to worker_job_information_favorite_path(job_information), method: :delete do %>
-              <i class="fas fa-star"></i>
-              <% end %>
-            <% end %>
-          <% end %>
+  <% if job_information.favorites.find_by(nurse_id: current_nurse.id).nil? %>
+    <%= link_to worker_job_information_favorites_path(job_information), method: :post do %>
+    <i class="far fa-star"></i>
+    <% end %>
+  <% else %>
+    <%= link_to worker_job_information_favorite_path(job_information), method: :delete do %>
+      <i class="fas fa-star"></i>
+    <% end %>
+  <% end %>
+<% end %>

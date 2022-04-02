@@ -9,9 +9,7 @@
     </div>
     <div class="col-lg-3 ml-auto">
       <%= image_tag @nurse.get_image(300, 240), class: "rounded-circle" %><br>
-      
-        
-      <h4><%= @nurse.nickname %></h4>
+      <h4><%= @nurse.display_name(@nurse) %></h4>
       <%= link_to "編集する", edit_worker_nurses_path, class: "btn btn-secondary w-75 mt-3" %>
     </div>
     <div class="col-lg-8 ml-auto">

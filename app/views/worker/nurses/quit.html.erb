@@ -3,14 +3,16 @@
     <div class="col-md-10">
       <div class="d-flex align-items-center justify-content-center">
         <h2>本当に退会しますか？</h2>
+        <p>ステータスを”在職中”にすることで会員情報を非表示にし、<br>
+        再度転職活動をする際に”求職中”にして表示することもできます。</p>
       </div>
     </div>
   </div>
   <div class="row align-items-center justify-content-center">
     <div class="col-lg-10">
       <div class="d-flex align-items-center justify-content-center">
-        <%= link_to "やめる", employer_hospitals_path, class: "btn btn-secondary m-3" %>
-        <%= link_to "退会する", employer_hospitals_path, method: :delete, class: "btn btn-danger m-3" %>
+        <%= link_to "やめる", worker_nurses_path, class: "btn btn-secondary m-3" %>
+        <%= link_to "退会する", worker_nurses_path, method: :delete, class: "btn btn-danger m-3" %>
       </div>
     </div>
   </div>

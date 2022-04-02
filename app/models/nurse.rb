@@ -16,11 +16,19 @@ class Nurse < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-  def nickname_or_name_display
-    
+
+# display_name_selectがtrueならニックネームを、falseなら苗字＋名前を表示
+  def display_name(nurse)
+    if display_name_select == false
+      nurse.first_name + last_name
+    else
+      if nurse.nickname.empty?
+        nurse.first_name + last_name
+      else
+        nurse.nickname
+      end
+    end
   end
 
-  def full_name_display
-    self.first_name + self.last_name
-  end
+
 end
