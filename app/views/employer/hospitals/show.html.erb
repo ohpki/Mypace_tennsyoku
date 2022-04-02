@@ -43,27 +43,45 @@
         </div>
         <div class="tabbox">
           <% @scouts.each do |scout| %>
-          <div class="job_informations-box">
-            <div class="row p-1">
-              <div class="col-sx-10 col-sm-3">
-                <%= image_tag scout.nurse.get_image(130, 110), class: "rounded-circle" %>
-              </div>
-              <div class="col-sx-10 col-sm-7">
-                <%= link_to scout.nurse.display_name(scout.nurse), employer_nurse_path(scout.nurse), class: "link-secondary" %><br>
-                <%= scout.nurse.qualification %><br>
-                <%= scout.nurse.address %><br>
+          <% if scout.nurse.job_seeking_status == true %>
+            <div class="job_informations-box">
+              <div class="row p-1">
+                <div class="col-sx-10 col-sm-3">
+                  <%= image_tag scout.nurse.get_image(130, 110), class: "rounded-circle" %>
+                </div>
+                <div class="col-sx-10 col-sm-7">
+                  <%= link_to scout.nurse.display_name(scout.nurse), employer_nurse_path(scout.nurse), class: "link-secondary" %><br>
+                  <%= scout.nurse.qualification %><br>
+                  <%= scout.nurse.address %><br>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
           <% end %>
           <div class="d-flex align-items-center justify-content-center">
             <%= paginate @scouts %>
           </div>
         </div>
         <div class="tabbox">
-          <p>タブ3の中身が入ります。</p>
-          <p>タブ3の中身が入ります。</p>
-          <p>タブ3の中身が入ります。</p>
+          <% @chat_rooms.each do |chat_room| %>
+          <div class="job_informations-box">
+            <div class="row p-1">
+              <div class="col-sx-10 col-sm-3">
+                <%= image_tag chat_room.nurse.get_image(80, 55) %><br>
+                <%= link_to chat_room.nurse.display_name(chat_room.nurse), chat_room_chats_path(chat_room), class: "text-dark" %>
+              </div>
+              <div class="col-sx-10 col-sm-7">
+                <% @chats = chat_room.chats %>
+                <% @chat = chat_room.chats.order(created_at: :desc).first %>
+                <%= @chat.message.truncate(50) %><br>
+                <%= @chat.created_at %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+          <div class="d-flex align-items-center justify-content-center">
+            <%= paginate @chat_rooms %>
+          </div>
         </div>
       </div>
       </div>

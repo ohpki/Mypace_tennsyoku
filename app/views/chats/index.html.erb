@@ -2,13 +2,11 @@
   <div class="row align-items-center justify-content-center">
     <div class="row align-items-center justify-content-center">
       <div class="col-lg-6">
-
           <% if nurse_signed_in? %>
             <h2><%= @chat_room.hospital.name %>さんとのメッセージ</h2>
           <% elsif hospital_signed_in? %>
             <h2><%= @chat_room.nurse.display_name(@chat_room.nurse) %>さんとのメッセージ</h2>
           <% end %>
-
       </div>
     </div>
       <!--メッセージの送り手が看護師の場合sender == true、病院の場合sender == false-->
@@ -86,7 +84,6 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-8">
             <%= f.text_field :message, class:"form-control" %>
-
           </div>
           <div class="col-2">
             <%= f.submit "送信" %>
