@@ -9,14 +9,14 @@
   border-radius: 15px;
   line-height: 1.5;
   padding: 20px;
-  margin: 5px 10px 5px 10px;
+  margin: 10px 10px 10px 10px;
   position: relative;
 
 }
 .my_down_triangle {
   position: absolute;
-  bottom: 5px;
-  right: -12px;
+  bottom: 20px;
+  right: -10px;
   color: #ffada3;
 }
 
@@ -32,7 +32,7 @@
 }
 .your_down_triangle {
   position: absolute;
-  bottom: 5px;
-  right: -12px;
+  bottom: 20px;
+  left: -10px;
   color: #fff;
 }

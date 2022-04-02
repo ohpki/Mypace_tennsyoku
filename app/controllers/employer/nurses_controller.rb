@@ -4,6 +4,7 @@ class Employer::NursesController < ApplicationController
   def show
     @nurse = Nurse.find(params[:id])
     @scout = Scout.new
+    @chat_room = ChatRoom.find_by(hospital_id: current_hospital.id, nurse_id: params[:id])
   end
 
   def index
