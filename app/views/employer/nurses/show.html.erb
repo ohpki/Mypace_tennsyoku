@@ -18,19 +18,22 @@
       備考<br>
       <%= @nurse.introduction %>
     </div>
-      <div class="row">
-        <div class="col-lg-3 mr-auto">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-lg-4">
           <% if @chat_room.nil? %>
             <%= form_with model:ChatRoom.new, url: chat_rooms_path, method: :post do |f| %>
               <%= f.hidden_field :hospital_id, :value => current_hospital.id %>
               <%= f.hidden_field :nurse_id, :value => @nurse.id %>
               <%= f.submit "メッセージを送る", class: "btn btn-secondary mt-3" %>
-              <% end %></div>
+              <% end %>
           <% else %>
-              <%= link_to "メッセージを送る", chat_room_chats_path(@chat_room), class: "btn btn-secondary mt-3" %>
+            <%= link_to "メッセージを送る", chat_room_chats_path(@chat_room), class: "btn btn-secondary mt-3" %>
           <% end %>
-            </div>
-        <div class="col-sm-3">
-通報
         </div>
-      </div>
+
+        <div class="col-lg-4">
+          <%= link_to "通報する", root_path, class: "btn btn-secondary mt-3" %>
+        </div>
+    </div>
+  </div>
+</div>
