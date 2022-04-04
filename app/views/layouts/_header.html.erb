@@ -11,6 +11,8 @@
         <ul class="navbar-nav ml-auto mt-auto">
             <%= link_to image_tag("btn-mine.png", width: '200', alt: "マイページ"), worker_nurses_path, class: "mr-5" %>
             <%= link_to image_tag("btn-sign-out.png", width: '200', alt: "ログアウト"), destroy_nurse_session_path, method: :delete, class: "mr-5" %>
+            
+            <%= link_to "通知", notifications_path %>
         </ul>
           <% elsif hospital_signed_in? %>
           <ul class="navbar-nav mt-auto">

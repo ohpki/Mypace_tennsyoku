@@ -5,6 +5,10 @@ before_action :authenticate_hospital!
     @nurse = Nurse.find(params[:nurse_id])
     @scout = @nurse.scouts.new(hospital_id: current_hospital.id)
     @scout.save
+    @hospital = current_hospital
+    @scout.create_notification_scout(@nurse, @scout, @hospital)
+
+
     redirect_to employer_nurse_path(params[:nurse_id])
   end
 

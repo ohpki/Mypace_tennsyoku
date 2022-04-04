@@ -1,6 +1,11 @@
 <% if hospital_signed_in? %>
   <% if nurse.scouts.find_by(hospital_id: current_hospital.id).nil? %>
     <%= link_to "スカウトする", employer_nurse_scouts_path(nurse), method: :post, class: "btn btn-secondary" %>
+    <%= form_with model:notification, url:notifications_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :sender, value: :current_hospital %>
+  <%= f.hidden_field :recipient, value: :nurse %>
+  <%= f.hidden_field :action, value: :"2" %>
+<% end %>
   <% else %>
     <%= link_to "スカウトを取り消す", employer_nurse_scout_path(nurse), method: :delete, class: "btn btn-secondary" %>
   <% end %>
