@@ -13,3 +13,9 @@ $(function() {
         $('.tabbox').eq(index).addClass('box-show');
     });
 });
+
+$(function () {
+    $('.notification_btn').on('click', () => {
+        $('.notification_index').toggle();
+    });
+});
