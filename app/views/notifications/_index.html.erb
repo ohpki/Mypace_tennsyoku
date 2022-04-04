@@ -1,0 +1,27 @@
+<div class="notification_btn mr-5">
+  <% if notifications.where(checked: false).exists? %>
+
+              あり
+              <% else %>
+              なし
+              <% end %>
+              <div class="notification_index">
+                <p>通知</p>
+              <% notifications.each do |notification| %>
+                     <% if notification.checked == false %>
+                       <p class="text-danger d-inline">new</p>
+
+                      <% notification.checked = true %>
+                      <% notification.save %>
+                     <% end %>
+                <% if notification.action == "chat" %>
+                  <%= link_to notification.action, chat_room_chats_path(notification.chst_room_id), class: "text-dark" %>が届いています。0
+                <% elsif notification.action == "subscription" %>
+                 <%= link_to notification.action, "job_informations/#{notification.job_information_id}", class: "text-dark" %>が届いています。1
+                 <% else %>
+                 <%= link_to notification.action, worker_hospital_path(notification.sender), class: "text-dark" %>が届いています。2
+
+                <% end %>
+              <% end %>
+              </div>
+        </div>

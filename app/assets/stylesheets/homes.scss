@@ -8,19 +8,45 @@
 }
 
 .notification_index {
+  border-bottom: solid 2px #550000;
+  border-radius: 10px;
   width: 300px;
   height: 300px;
   display: none;
   position: absolute;
-  top: 50px;
+  top: 50%;
   z-index: 1;
   padding: 16px;
+  right: 10%;
   border-radius: 6px;
-  background: #eee;
+  background: #fff;
   text-align: center;
-  color: #333;
   line-height: 1.5;
   img {
     padding-top: 10px;
   }
+}
+
+@media screen and (max-width:768px) {
+  .notification_index {
+    border-bottom: solid 2px #550000;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    display: none;
+    position: absolute;
+    top: 40Px;
+    z-index: 1;
+    left: 0px;
+    padding: 16px;
+    border-radius: 6px;
+    background: #eee;
+    text-align: center;
+    color: #333;
+    line-height: 1.5;
+    img {
+      padding-top: 10px;
+  }
+}
+
 }

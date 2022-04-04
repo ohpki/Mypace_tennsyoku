@@ -4,8 +4,8 @@ class CreateNotifications < ActiveRecord::Migration[6.1]
       t.integer :sender, null: false
       t.integer :recipient, null: false
       t.integer :action, null: false
-      t.integer :chat_id
-      t.integer :subscription_id
+      t.integer :chst_room_id
+      t.integer :job_information_id
       t.integer :scout_id
       t.boolean :checked, null: false, default: "false"
 
