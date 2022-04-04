@@ -2,9 +2,9 @@ ja:
   enums:
     notification:
       action:
-        chat: "メッセージ"
-        subscription: "応募"
-        scout: "スカウト"
+        chat: メッセージ
+        subscription: 応募
+        scout: スカウト
   activerecord:
     errors:
       messages:

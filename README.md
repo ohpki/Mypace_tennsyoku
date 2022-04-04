@@ -74,6 +74,7 @@ https://docs.google.com/spreadsheets/d/1kkbMm89h9Xgz9qPov3O9udh0d_mruT6UippRFD_f
 - JS ライブラリ：jQuery
 - IDE：Cloud9
 
+
 ## 使用素材
 
 - Font Free https://fontfree.me/
@@ -81,5 +82,6 @@ https://docs.google.com/spreadsheets/d/1kkbMm89h9Xgz9qPov3O9udh0d_mruT6UippRFD_f
 - O-DAN https://o-dan.net/ja/
 - morguefile https://morguefile.com/
 - イラスト AC https://www.ac-illust.com/
+- icooon-mono https://icooon-mono.com/
 
 ## 当サイトは架空の求人サイトになります。実際に求人情報の掲載、応募はできませんのでご注意下さい。

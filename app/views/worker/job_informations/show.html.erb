@@ -4,8 +4,8 @@
       <div class="col-12">
         <div class="d-flex align-items-center justify-content-center mt-7">
           <h2>求人情報詳細</h2>
-          <div id="favorite_btn_<%= @job_information.id %>">
-　　　    <%= render "worker/favorites/favorite-btn", job_information: @job_information %>
+          <div id="favorite_btn">
+　　　    <%= render "worker/favorites/favorite-btn", job_information: @job_information, 'data-turbolinks': false %>
 　　      </div>
         </div>
       </div>
