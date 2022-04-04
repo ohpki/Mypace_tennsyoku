@@ -1,6 +1,6 @@
 class Worker::SubscriptionsController < ApplicationController
   before_action :authenticate_nurse!
-  
+
   def new
     @subscription = Subscription.new
     @job_information = params[:subscription][:job_information_id]
@@ -9,6 +9,9 @@ class Worker::SubscriptionsController < ApplicationController
   def create
     @subscription = Subscription.new(subscription_params)
     if @subscription.save
+      @nurse = current_nurse
+      @job_information = JobInformation.find_by(id: @subscription.job_information_id)
+      @subscription.create_notification_subscription(@nurse.id, @subscription.job_information_id, @job_information.hospital_id)
       redirect_to worker_job_informations_path, notice: "求人に応募しました"
     else
       redirect_back(fallback_location: root_path, notice: "応募処理に失敗しました")

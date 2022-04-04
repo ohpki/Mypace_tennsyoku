@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="col-lg-3 ml-auto">
-      <%= image_tag @hospital.get_image(250, 150), size: '300x240'%><br>
+      <%= image_tag @hospital.get_image(250, 150) %><br>
       <h4><%= @hospital.name %></h4>
       <%= link_to "編集する", edit_employer_hospitals_path, class: "btn btn-secondary w-75 mt-3" %>
     </div>

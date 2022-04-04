@@ -3,4 +3,5 @@ class JobInformation < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+
 end
