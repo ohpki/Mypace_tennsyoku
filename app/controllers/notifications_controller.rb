@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
   before_action :nurse_or_hospital?
   def index
-    @notifications = Notification.where(recipient: @user.id).order(created_at: :desc).page(params[:page]).per(10)
+    @notifications = Notification.where(recipient: @user.id).order(created_at: :desc).page(params[:page]).per(1)
 
   end
 
