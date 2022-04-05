@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   devise_for :hospitals, skip: [:passwords], controllers: {
     registrations: "employer/registrations",
     sessions: "employer/sessions"
-
 }
+  devise_scope :nueses do
+    post 'worker/guest_sign_in', to: 'worker/sessions#guest_sign_in'
+  end
+
   root to: 'homes#top'
   get 'homes/top'
   get 'homes/about'
