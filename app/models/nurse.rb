@@ -29,13 +29,7 @@ class Nurse < ApplicationRecord
       end
     end
   end
-
-  def self.guest
-    find_or_create_by!(name: 'guestnurse' ,email: 'guest@example.com') do |nurse|
-      nurse.password = SecureRandom.urlsafe_base64
-      nurse.name = "guestnurse"
-    end
-  end
+  
 
 
 end
