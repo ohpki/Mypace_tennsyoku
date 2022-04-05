@@ -11,10 +11,12 @@ class ChatsController < ApplicationController
     @chat.chat_room_id = params[:chat_room_id]
     if @chat.save
       @chat_room = ChatRoom.find_by(id: @chat.chat_room_id)
+      @chats = Chat.where(chat_room_id: @chat_room.id)
+
     else
       @chat_room = ChatRoom.find(params[:chat_room_id])
       @chats = Chat.where(chat_room_id: @chat_room.id)
-      render :index
+      
     end
 
     # メッセージ送信した自分が看護師だった場合、メッセージ送信者は自分(看護師)、受診者は病院
