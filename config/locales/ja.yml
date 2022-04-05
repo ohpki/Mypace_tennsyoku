@@ -210,3 +210,11 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  activerecord:
+    attributes:
+      job_information:
+        title: 要件
+        work_style: 勤務形態
+        alarys: 給与情報
+      chat:
+        message: メッセージ

@@ -9,8 +9,13 @@ class ChatsController < ApplicationController
   def create
     @chat = Chat.new(chat_params)
     @chat.chat_room_id = params[:chat_room_id]
-    @chat.save
-    @chat_room = ChatRoom.find_by(id: @chat.chat_room_id)
+    if @chat.save
+      @chat_room = ChatRoom.find_by(id: @chat.chat_room_id)
+    else
+      @chat_room = ChatRoom.find(params[:chat_room_id])
+      @chats = Chat.where(chat_room_id: @chat_room.id)
+      render :index
+    end
 
     # メッセージ送信した自分が看護師だった場合、メッセージ送信者は自分(看護師)、受診者は病院
     # メッセージ送信した自分が病院だった場合、メッセージ送信者は自分(病院)、受診者は看護師
@@ -23,7 +28,7 @@ class ChatsController < ApplicationController
       you = @chat_room.nurse_id
     end
     @chat.create_notification_chat(myself, @chat.chat_room_id, you)
-    
+
   end
 
   private

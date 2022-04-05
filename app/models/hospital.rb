@@ -10,6 +10,12 @@ class Hospital < ApplicationRecord
   has_many :notifications
   has_many :chat_rooms, dependent: :destroy
 
+  validates :name, presence: true, length: { maximum: 40 }
+  validates :postal_code, presence: true, length: { is: 7 }
+  validates :address, presence: true, length: { maximum: 30 }
+  validates :phone_number, presence: true, length: { in: 10..11 }
+
+
   def display_job_offer_status(status)
     if status == true
       "公開中"

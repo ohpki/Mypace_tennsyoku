@@ -7,9 +7,12 @@ class Employer::JobInformationsController < ApplicationController
   def create
     @job_information = JobInformation.new(job_information_params)
     @job_information.hospital_id = current_hospital.id
-    @job_information.save
-    redirect_to employer_job_information_path(@job_information)
-
+    if @job_information.save
+      redirect_to employer_job_information_path(@job_information)
+    else
+      @hospital = current_hospital
+      render :new
+    end
   end
 
   def index
@@ -31,6 +34,8 @@ class Employer::JobInformationsController < ApplicationController
     if @job_information.update(job_information_params)
       redirect_to employer_job_information_path(@job_information), notice: "求人情報が更新されました"
     else
+      @job_information = JobInformation.new
+      @hospital = current_hospital
       render :edit
     end
 

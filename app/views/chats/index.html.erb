@@ -4,6 +4,7 @@
       <div class="col-lg-6">
           <% if nurse_signed_in? %>
             <h2><%= @chat_room.hospital.name %>さんとのメッセージ</h2>
+            <%= render 'layouts/errors', obj: @chat %>
           <% elsif hospital_signed_in? %>
             <h2><%= @chat_room.nurse.display_name(@chat_room.nurse) %>さんとのメッセージ</h2>
           <% end %>

@@ -10,4 +10,6 @@ class Chat < ApplicationRecord
         notification.save if notification.valid?
   end
 
+  validates :message, presence: true
+
 end
