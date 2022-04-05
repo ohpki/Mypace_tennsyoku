@@ -23,7 +23,7 @@ class ChatsController < ApplicationController
       you = @chat_room.nurse_id
     end
     @chat.create_notification_chat(myself, @chat.chat_room_id, you)
-    redirect_to chat_room_chats_path(params[:chat_room_id])
+    
   end
 
   private
