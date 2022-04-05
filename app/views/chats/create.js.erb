@@ -1,3 +1,3 @@
-$("#chats_index").html("<%= j(render 'worker/chats/index', chats: @chats, chat_room: @chat_room, chat: @chat) %>");
+$("#chats_index").html("<%= j(render '/chats/index', chats: @chats, chat_room: @chat_room, chat: @chat) %>");
 $("#chat_message").val('');
-$(".error_explanation").html("<%= j(render 'layouts/errors', obj: @chat) %>");
+$('#errors').html("<%= j(render 'layouts/errors', obj: @chat) %>");
