@@ -9,6 +9,10 @@ class Nurse < ApplicationRecord
   has_many :chat_rooms, dependent: :destroy
   has_many :scouts, dependent: :destroy
 
+  validates :first_name, presence: true, length: { maximum: 10 }
+  validates :last_name, presence: true, length: { maximum: 10 }
+  validates :qualification, presence: true
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no-image-nurse.jpg')
@@ -29,7 +33,7 @@ class Nurse < ApplicationRecord
       end
     end
   end
-  
+
 
 
 end

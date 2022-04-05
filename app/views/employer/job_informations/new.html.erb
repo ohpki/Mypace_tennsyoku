@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row align-items-center justify-content-center">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-12">
         <div class="d-flex align-items-center justify-content-center mt-7">
           <h2>求人情報新規作成</h2>
+          <%= render 'layouts/errors', obj: @job_information %>
         </div>
       </div>
+
     </div>
       <%= form_with model:@job_information, method: :post, url: "/employer/job_informations", local:true do |f| %>
         <%= render partial: 'form', locals: { :f => f, job_information: @job_information, hospital: @hospital} %>
