@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   devise_for :nurses, skip: [:passwords], controllers: {
     registrations: "worker/registrations",
     sessions: 'worker/sessions'
+
+
 }
   devise_for :hospitals, skip: [:passwords], controllers: {
     registrations: "employer/registrations",
     sessions: "employer/sessions"
 }
-  devise_scope :nueses do
-    post 'worker/guest_sign_in', to: 'worker/sessions#guest_sign_in'
-  end
+
 
   root to: 'homes#top'
   get 'homes/top'
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :chats, only: [:new, :create, :index]
   end
   namespace :employer do
+    post '/guest_sign_in', to: 'guests#guest_sign_in'
     resources :nurses, only: [:show, :index] do
       resources :scouts, only: [:new, :index, :create, :destroy]
     end
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
   end
 
   namespace :worker do
+    post '/guest_sign_in', to: 'guests#guest_sign_in'
     resources :subscriptions, only: [:new, :create, :show, :index, :edit, :update, :destroy]
     resources :hospitals, only: [:show]
     resource :nurses, only: [:show, :edit, :update, :destroy]
