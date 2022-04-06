@@ -34,7 +34,7 @@ class Worker::NursesController < ApplicationController
   end
 
   def nurse_params
-    params.require(:nurse).permit(:display_name_select, :first_name, :last_name, :first_name_kana, :last_name_kana, :image, :job_detail, :qualification, :select_name, :Introduction)
+    params.require(:nurse).permit(:display_name_select, :first_name, :last_name, :first_name_kana, :last_name_kana, :image, :job_detail, :qualification, :select_name, :Introduction, :image)
   end
 
 

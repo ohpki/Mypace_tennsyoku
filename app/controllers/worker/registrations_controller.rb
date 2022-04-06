@@ -48,7 +48,7 @@ class Worker::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :first_name, :last_name, :first_name_kana, :last_name_kana, :image, :job_detail])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :first_name, :last_name, :first_name_kana, :last_name_kana, :image, :job_detail, :qualification, :address])
     devise_parameter_sanitizer.permit(:account_update, keys: [:display_name_select, :qualification, :address, :birthday, :name, :first_name, :last_name, :nickname, :first_name_kana, :last_name_kana, :image, :job_detail, :phone_number, :Introduction, :job_seeking_status])
   end
   # If you have extra params to permit, append them to the sanitizer.

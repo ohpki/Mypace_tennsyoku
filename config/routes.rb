@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :chats, only: [:new, :create, :index]
   end
   namespace :employer do
+    get "nurses/search", to: "nurses#search"
     post '/guest_sign_in', to: 'guests#guest_sign_in'
     resources :nurses, only: [:show, :index] do
       resources :scouts, only: [:new, :index, :create, :destroy]
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
   end
 
   namespace :worker do
+    get "job_informations/search", to: "job_informations#search"
     post '/guest_sign_in', to: 'guests#guest_sign_in'
     resources :subscriptions, only: [:new, :create, :show, :index, :edit, :update, :destroy]
     resources :hospitals, only: [:show]
