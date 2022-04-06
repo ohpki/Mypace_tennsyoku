@@ -8,6 +8,7 @@ class Nurse < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :chat_rooms, dependent: :destroy
   has_many :scouts, dependent: :destroy
+  has_many :notifications, foreign_key: "nurse_id", class_name: "Notification", dependent: :destroy
 
   validates :first_name, presence: true, length: { maximum: 10 }
   validates :last_name, presence: true, length: { maximum: 10 }
@@ -20,6 +21,7 @@ class Nurse < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+  
 
 # display_name_selectがtrueならニックネームを、falseなら苗字＋名前を表示
   def display_name(nurse)

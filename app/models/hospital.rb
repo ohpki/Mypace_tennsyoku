@@ -7,8 +7,9 @@ class Hospital < ApplicationRecord
 
   has_many :job_informations, dependent: :destroy
   has_many :scouts, dependent: :destroy
-  has_many :notifications
+  has_many :notifications, foreign_key: "hospital_id", class_name: "Notification", dependent: :destroy
   has_many :chat_rooms, dependent: :destroy
+
 
   validates :name, presence: true, length: { maximum: 40 }
   validates :postal_code, presence: true, length: { is: 7 }
