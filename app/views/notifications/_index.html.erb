@@ -10,14 +10,14 @@
       <% if notification.checked == false %>
         <p class="text-danger d-inline">new</p>
         <% notification.checked = true %>
-        <% notification.save %>
+        <% notification.notification_update(notification.id) %>
         <% end %>
       <% if notification.action == "chat" %>
-        <%= link_to notification.action_i18n, chat_room_chats_path(notification.chst_room_id), class: "text-warning" %>が届いています。0<br>
+        <%= link_to notification.action_i18n, chat_room_chats_path(notification.chst_room_id), class: "text-warning" %>が届いています。<br>
       <% elsif notification.action == "subscription" %>
-        <%= link_to notification.action_i18n, "job_informations/#{notification.job_information_id}", class: "text-warning" %>が届いています。1<br>
+        <%= link_to notification.action_i18n, "job_informations/#{notification.job_information_id}", class: "text-warning" %>が届いています。<br>
         <% else %>
-      <%= link_to notification.action_i18n, worker_hospital_path(notification.sender), class: "text-warning" %>が届いています。2<br>
+      <%= link_to notification.action_i18n, worker_hospital_path(notification.sender), class: "text-warning" %>が届いています。<br>
       <% end %>
     <% end %>
 
