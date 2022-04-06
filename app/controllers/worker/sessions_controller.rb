@@ -24,13 +24,9 @@ class Worker::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  def guest_sign_in
-    nurse = Nurse.guest
-    sign_in nurse
-    redirect_to worker_nurses_path, notice: 'guestnurseでログインしました。'
-  end
+
   def after_sign_in_path_for(resource)
-    worker_nurses_path
+    worker_job_informations_path
   end
 
   def after_sign_out_path_for(resource)
