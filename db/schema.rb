@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2022_03_29_114840) do
   create_table "chat_rooms", force: :cascade do |t|
     t.integer "hospital_id", null: false
     t.integer "nurse_id", null: false
+    t.integer "rejection"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
