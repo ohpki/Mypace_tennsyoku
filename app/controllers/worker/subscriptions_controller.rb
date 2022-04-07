@@ -23,18 +23,11 @@ class Worker::SubscriptionsController < ApplicationController
     @job_informations = @subscriptions.job_informations.order.order(created_at: :desc).page(params[:page]).per(3)
   end
 
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
     @subscription = Subscription.find(params[:id])
+    notification = Notification.find_by(job_information_id: @subscription.job_information_id, nurse_id: current_nurse)
     if @subscription.destroy
+      notification.destroy
       redirect_to worker_nurses_path, notice: "応募を取り消しました"
     else
       redirect_back(fallback_location: root_path, notice: "取り消しに失敗しました")

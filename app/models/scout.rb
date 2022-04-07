@@ -1,7 +1,7 @@
 class Scout < ApplicationRecord
   belongs_to :nurse
   belongs_to :hospital
-  has_one :notification
+  has_one :notification, dependent: :destroy
 
   def create_notification_scout(recipient_user, scout, hospital)
         notification = Notification.new(

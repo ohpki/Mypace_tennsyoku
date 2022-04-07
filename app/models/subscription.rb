@@ -1,7 +1,7 @@
 class Subscription < ApplicationRecord
   belongs_to :nurses, optional: true
   belongs_to :job_information
-  belongs_to :notification, dependent: :destroy
+  belongs_to :notification, dependent: :destroy, optional: true
 
 
   def create_notification_subscription(myself, contents, you)

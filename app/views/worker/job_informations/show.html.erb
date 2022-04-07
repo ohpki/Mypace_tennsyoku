@@ -13,7 +13,7 @@
     <div class="col-lg-3 ml-auto">
       <%= image_tag @job_information.hospital.get_image(250, 150), size: '200x130'%><br>
       病院名
-      <%= link_to worker_hospital_path(@job_information.hospital_id), class: "link-secondary" do %>
+      <%= link_to worker_hospital_path(@job_information.hospital_id), class: "link-warning" do %>
         <%= @job_information.hospital.name %>
         <% hidden_field_tag :hospital_id, @job_information.hospital_id %>
       <% end %>

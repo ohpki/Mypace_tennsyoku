@@ -4,10 +4,11 @@
       <div class="col-12">
         <div class="d-flex align-items-center justify-content-center mt-7">
            <h2>求人情報詳細</h2>
-          <% if @job_information.hospital_id == current_hospital %>
-            <%= link_to "応募一覧", employer_subscriptions_index_path, class: "btn btn-secondary ml-sm-5" %>
-            <%= hidden_field_tag :job_information_id, value: :@job_information.id %>
-
+          <% if @job_information.hospital_id == current_hospital.id %>
+            <%= form_with url:employer_subscriptions_index_path, method: :get, local: true do |f| %>
+              <%= f.hidden_field:job_information_id, :value => @job_information.id %>
+              <%= f.submit "応募者一覧", class: "btn btn-secondary ml-3" %>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -28,7 +29,7 @@
       <div class="col-lg-4">
         <% if @job_information.hospital_id == current_hospital.id %>
           <%= link_to "編集する", edit_employer_job_information_path, class: "btn btn-secondary mt-3" %>
-          <%= link_to "消去する", employer_job_information_path(@job_information), method: :delete, data: { confirm: '削除しますか？' },  class: "btn btn-secondary mt-3" %>
+          <%= link_to "消去する", employer_job_information_path(@job_information), method: :delete, data: { confirm: '削除しますか？' },  class: "btn btn-danger mt-3" %>
         <% end %>
       </div>
     </div>
