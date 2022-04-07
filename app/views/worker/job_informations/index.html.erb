@@ -21,7 +21,7 @@
               <%= image_tag job_information.hospital.get_image(150, 90) %>
             </div>
             <div class="col-7">
-              <%= link_to job_information.title, worker_job_information_path(job_information), class: "link-secondary" %><br>
+              <%= link_to job_information.title, worker_job_information_path(job_information), class: "link-warning" %><br>
               勤務形態　　<%= job_information.work_style %><br>
               給与　　　　<%= job_information.alarys %><br>
               住所　　　　<%= job_information.hospital.address %>

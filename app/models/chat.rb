@@ -1,6 +1,6 @@
 class Chat < ApplicationRecord
   belongs_to :chat_room
-  # belongs_to :notification
+  belongs_to :notification, optional: true
   validates :message, presence: true
 
   def create_notification_chat(myself, contents, you, nurse, hospital)

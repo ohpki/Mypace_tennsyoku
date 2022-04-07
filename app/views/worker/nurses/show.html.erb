@@ -40,7 +40,7 @@
                   <%= image_tag @job_information.hospital.get_image(150, 90) %>
                 </div>
                 <div class="col-sx-10 col-sm-7">
-                  <%= link_to @job_information.title, worker_job_information_path(@job_information), class: "link-secondary" %><br>
+                  <%= link_to @job_information.title, worker_job_information_path(@job_information), class: "link-warning" %><br>
                   勤務形態　　<%= @job_information.work_style %><br>
                   給与　　　　<%= @job_information.alarys %><br>
                   住所　　　　<%= @job_information.address %>
@@ -64,7 +64,7 @@
                   <%= image_tag @job_information.hospital.get_image(150, 90) %>
                 </div>
                 <div class="col-sx-10 col-sm-7">
-                  <%= link_to @job_information.title, worker_job_information_path(@job_information), class: "link-secondary" %><br>
+                  <%= link_to @job_information.title, worker_job_information_path(@job_information), class: "link-warning" %><br>
                   勤務形態　　<%= @job_information.work_style %><br>
                   給与　　　　<%= @job_information.alarys %><br>
                   住所　　　　<%= @job_information.address %>
@@ -85,7 +85,7 @@
             <div class="row p-1">
               <div class="col-sx-10 col-sm-3">
                 <%= image_tag chat_room.hospital.get_image(80, 55) %><br>
-                <%= link_to chat_room.hospital.name, chat_room_chats_path(chat_room), class: "text-dark" %>
+                <%= link_to chat_room.hospital.name, chat_room_chats_path(chat_room), class: "link-warning" %>
               </div>
               <div class="col-sx-10 col-sm-7">
                 <% @chats = chat_room.chats %>

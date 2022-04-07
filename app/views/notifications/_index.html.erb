@@ -20,8 +20,8 @@
       <%= link_to notification.action_i18n, worker_hospital_path(notification.sender), class: "text-warning" %>が届いています。<br>
       <% end %>
     <% end %>
-
+    <div class="d-flex align-items-center justify-content-center">
       <%= paginate notifications %>
-
-   </div>
+    </div>
+  </div>
 </div>

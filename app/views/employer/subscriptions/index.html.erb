@@ -7,20 +7,22 @@
         </div>
       </div>
     </div>
-
+    <% @subscriptions.each do |subscription| %>
     <div class="job_informations-box p-2">
       <div class="row">
         <div class="col-3">
-          <%= image_tag subscription.nurse.get_image(150, 90), class: "rounded-circle" %>
+          <% nurse = Nurse.find_by(id: subscription.nurse_id) %>
+          <%= image_tag nurse.get_image(150, 90), class: "rounded-circle" %>
         </div>
-        <% @subscriptions.each do |subscription| %>
-        <div class="col-7">
-          <%= link_to subscription.nurse.nickname, employer_nurse_path(subscription.nurse_id), class: "text-dark" %><br>
+       <div class="col-7">
+          <%= link_to nurse.display_name(nurse), employer_nurse_path(nurse.id), class: "link-warning" %><br>
+          保有資格　　<%= nurse.qualification %><br>
+          現住所　　　　<%= nurse.address %><br>
           <%= subscription.created_at %>
         </div>
-        <% end %>
       </div>
     </div>
+   <% end %>
   </div>
 </div>
 

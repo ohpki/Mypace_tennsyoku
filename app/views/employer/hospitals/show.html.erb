@@ -30,7 +30,7 @@
           </div>
           <% @job_informations.each do |job_information| %>
             <div class="job_informations-box">
-              <%= link_to job_information.title, employer_job_information_path(job_information), class: "link-secondary" %><br>
+              <%= link_to job_information.title, employer_job_information_path(job_information), class: "link-warning" %><br>
               勤務形態　　<%= job_information.work_style %><br>
               給与　　　　<%= job_information.alarys %><br>
               <%= @hospital.display_job_offer_status(job_information.job_offer_status) %>
@@ -50,7 +50,7 @@
                   <%= image_tag scout.nurse.get_image(130, 110), class: "rounded-circle" %>
                 </div>
                 <div class="col-sx-10 col-sm-7">
-                  <%= link_to scout.nurse.display_name(scout.nurse), employer_nurse_path(scout.nurse), class: "link-secondary" %><br>
+                  <%= link_to scout.nurse.display_name(scout.nurse), employer_nurse_path(scout.nurse), class: "link-warning" %><br>
                   <%= scout.nurse.qualification %><br>
                   <%= scout.nurse.address %><br>
                 </div>
@@ -68,7 +68,7 @@
             <div class="row p-1">
               <div class="col-sx-10 col-sm-3">
                 <%= image_tag chat_room.nurse.get_image(80, 55) %><br>
-                <%= link_to chat_room.nurse.display_name(chat_room.nurse), chat_room_chats_path(chat_room), class: "text-dark" %>
+                <%= link_to chat_room.nurse.display_name(chat_room.nurse), chat_room_chats_path(chat_room), class: "link-warning" %>
               </div>
               <div class="col-sx-10 col-sm-7">
                 <% @chats = chat_room.chats %>
