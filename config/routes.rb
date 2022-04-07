@@ -13,8 +13,9 @@ Rails.application.routes.draw do
 
 
   root to: 'homes#top'
-  get 'report/send_mail'
   get 'report/new_mail'
+  get 'report/send_mail'
+
   get 'homes/top'
   get 'homes/about'
   get 'homes/nurse'

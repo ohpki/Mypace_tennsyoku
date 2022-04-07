@@ -1,20 +1,19 @@
 <div class="container">
-  <h3 class="margin_top text-center">送信が完了しました</h3>
+  <h3 class="margin_top text-center">管理者へ下記内容をメールで報告しました</h3>
     <div class="main_width">
-      <div class="margin_top">内容は以下の通りです。</div>
+      <div class="margin_top">貴重なご意見ありがとうございます。内容を確認後、適切な対応を検討いたします。</div>
         <div class="small_margin_top">
-          [タイトル]<p class="font-weight-bold"> <%= @mail_title %></p>
+          タイトル<p class="font-weight-bold"> <%= @mail_title %></p>
         </div>
         <div>
-          [本文]<p class="font-weight-bold"> <%= safe_join(@mail_content.split("\n"),tag(:br)) %></p>
+          本文<p class="font-weight-bold"> <%= safe_join(@mail_content.split("\n"),tag(:br)) %></p>
         </div>
         <div>
-          [通報されたユーザー]<p class="font-weight-bold">
-            <%# reported_user = Nurse.find_by(id: @reported_user) %>
+          通報されたユーザー<p class="font-weight-bold">
             <%= @reported_user %></p>
         </div>
         <div>
-          [通報したユーザー]<p class="font-weight-bold"> <%= @sender %></p>
+          通報したユーザー<p class="font-weight-bold"> <%= @sender %></p>
         </div>
     </div>
 </div>

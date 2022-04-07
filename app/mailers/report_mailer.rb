@@ -4,7 +4,8 @@ class ReportMailer < ApplicationMailer
     @mail_content = mail_content
     @sender = sender_user
     @reported_user = reported_user
+    mail(to: "sample2@gmail", subject: 'Mypace_kanngoから通報メールです')
 
-    mail to: "ohpkiki@gmail.com"
+
   end
 end

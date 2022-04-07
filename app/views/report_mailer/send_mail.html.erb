@@ -1,0 +1,5 @@
+内容通報内容は下記です。
+ [タイトル]<%= @mail_title %>
+ [本文]<%= safe_join(@mail_content.split("\n"),tag(:br)) %>
+ [通報されたユーザー]<%= @reported_user %>
+ [通報したユーザー]<%= @sender %>

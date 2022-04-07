@@ -9,6 +9,10 @@ class ReportController < ApplicationController
     @reported_user = params[:reported_user]
     @mail_title = params[:mail_title]
     @mail_content = params[:mail_content]
-    ReportMailer.send_mail(@mail_title, @mail_content, @sender, @reported_user).deliver
+    ReportMailer.send_mail(@mail_title, @mail_content, @sender, @reported_user).deliver_now
+
+
   end
+
+
 end
