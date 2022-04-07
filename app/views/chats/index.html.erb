@@ -5,17 +5,41 @@
           <% if nurse_signed_in? %>
             <h2><%= @chat_room.hospital.name %>さんとのメッセージ</h2>
             <div id="errors"><%= render 'layouts/errors', obj: @chat %></div>
-
+            <div class="col-lg-2">
+            <% if @chat_room.rejection == "nurse_rejection" %>
+              <%= form_with model:@chat_room, url: chat_room_path(@chat_room), methot: :post, local: true do |f| %>
+                <%= f.hidden_field :rejection, :value => "allow_messages" %>
+                <%= f.submit "メッセージを許可", class: "btn btn-secondary" %>
+              <% end %>
+            <% elsif @chat_room.rejection == "allow_messages" %>
+            <%= form_with model:@chat_room, url: chat_room_path(@chat_room), methot: :post, local: true do |f| %>
+              <%= f.hidden_field :rejection, :value => "nurse_rejection" %>
+              <%= f.submit "メッセージを拒否", class: "btn btn-danger ml-md-5" %>
+            <% end %>
+          <% end %>
+          </div>
           <% elsif hospital_signed_in? %>
             <h2><%= @chat_room.nurse.display_name(@chat_room.nurse) %>さんとのメッセージ</h2>
             <div id="errors"><%= render 'layouts/errors', obj: @chat %></div>
+            <% if @chat_room.rejection == "hospital_rejection" %>
+              <%= form_with model:@chat_room, url: chat_room_path(@chat_room), methot: :post, local: true do |f| %>
+                <%= f.hidden_field :rejection, :value => "allow_messages" %>
+                <%= f.submit "メッセージを許可" %>
+          <% end %>
+          <% elsif @chat_room.rejection == "allow_messages" %>
+            <%= form_with model:@chat_room, url: chat_room_path(@chat_room), methot: :post, local: true do |f| %>
+              <%= f.hidden_field :rejection, :value => "hospital_rejection" %>
+              <%= f.submit "メッセージを拒否" %>
+            <% end %>
+          <% end %>
           <% end %>
       </div>
     </div>
     <div id="chats_index">
       <%= render "chats/index", chats: @chats, chat_room: @chat_room, chat: @chat %>
     </div>
-     <%= form_with model:@chat, methot: :post, url: chat_room_chats_path(params[:chat_room_id]), local: false, class: "js-form" do |f| %>
+    <% if @chat_room.rejection == "allow_messages" %>
+      <%= form_with model:@chat, methot: :post, url: chat_room_chats_path(params[:chat_room_id]), local: false, class: "js-form" do |f| %>
         <% if nurse_signed_in? %>
           <%= f.hidden_field :sender, value: :true %>
         <% elsif %>
@@ -30,5 +54,10 @@
           </div>
         </div>
       <% end %>
+    <% elsif %>
+      <div class="notice">
+        ※この方とのメッセージのやり取りは出来ません。
+      </div>
+    <% end %>
   </div>
 </div>
