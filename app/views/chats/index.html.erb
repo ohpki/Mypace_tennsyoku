@@ -24,12 +24,12 @@
             <% if @chat_room.rejection == "hospital_rejection" %>
               <%= form_with model:@chat_room, url: chat_room_path(@chat_room), methot: :post, local: true do |f| %>
                 <%= f.hidden_field :rejection, :value => "allow_messages" %>
-                <%= f.submit "メッセージを許可" %>
+                <%= f.submit "メッセージを許可", class: "btn btn-secondary" %>
           <% end %>
           <% elsif @chat_room.rejection == "allow_messages" %>
             <%= form_with model:@chat_room, url: chat_room_path(@chat_room), methot: :post, local: true do |f| %>
               <%= f.hidden_field :rejection, :value => "hospital_rejection" %>
-              <%= f.submit "メッセージを拒否" %>
+              <%= f.submit "メッセージを拒否", class: "btn btn-danger ml-md-5" %>
             <% end %>
           <% end %>
           <% end %>
