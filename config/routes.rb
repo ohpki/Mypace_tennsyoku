@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :nurses, skip: [:passwords], controllers: {
     registrations: "worker/registrations",
     sessions: 'worker/sessions'
@@ -12,6 +13,9 @@ Rails.application.routes.draw do
 
 
   root to: 'homes#top'
+  get 'report/new_mail'
+  get 'report/send_mail'
+
   get 'homes/top'
   get 'homes/about'
   get 'homes/nurse'

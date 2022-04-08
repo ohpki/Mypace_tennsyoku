@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="d-flex align-items-center justify-content-center mt-7">
+          <h3>管理者へ下記内容をメールで報告しました。</h3>
+
+        </div>
+      </div>
+    </div>
+      <div class="col-xs-8 col-sm-4 col-md-4">
+        <p>貴重なご意見ありがとうございます。<br>内容を確認後、適切な対応を検討いたします。</p>
+        <div class="small_margin_top">
+          <タイトル><p class="font-weight-bold"> <%= @mail_title %></p>
+        </div>
+        <div>
+          <本文><p class="font-weight-bold"> <%= safe_join(@mail_content.split("\n"),tag(:br)) %></p>
+        </div>
+        <div class="small_margin_top">
+          <% if @nurse_or_hospitai == "nurse" %>
+            <通報された病院ユーザー><%= @reported_user %><br>
+            <通報した看護師ユーザー><%= @sender %><br>
+        </div>
+        <div class="small_margin_top">
+          <% elsif @nurse_or_hospitai == "hospital" %>
+            <通報された看護師ユーザー><%= @reported_user %><br>
+            <通報した病院ユーザー><%= @sender %><br>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
