@@ -19,7 +19,7 @@
       <%= @nurse.introduction %>
     </div>
       <div class="row align-items-center justify-content-center">
-        <div class="col-lg-4">
+        <div class="col-lg-3 ml-auto">
           <% if @chat_room.nil? %>
             <%= form_with model:ChatRoom.new, url: chat_rooms_path, method: :post do |f| %>
               <%= f.hidden_field :hospital_id, :value => current_hospital.id %>
@@ -30,10 +30,17 @@
             <%= link_to "メッセージを送る", chat_room_chats_path(@chat_room), class: "btn btn-secondary mt-3" %>
           <% end %>
         </div>
-
-        <div class="col-lg-4">
-          <%= link_to "通報する", root_path, class: "btn btn-secondary mt-3" %>
+       <div class="col-lg-3 mr-auto d-inline">
+          <%= form_with url: report_new_mail_path, method: :get, local: true do |f| %>
+            <%= f.hidden_field :sender, :value => current_hospital.id %>
+            <%= f.hidden_field :reported_user, :value => @nurse.id %>
+             <!--報告者と報告された者のidは同一のものが存在するので、nurse_or_hospitaiでどちらのものか見分ける。-->
+             <!--nurse_or_hospitaiに通報者のユーザーの種類を入れる。-->
+            <%= f.hidden_field :nurse_or_hospitai, :value => "hospital" %>
+            <%= f.submit "通報する", class: "btn btn-danger mt-3" %>
+          <% end %>
         </div>
+      </div>
     </div>
   </div>
 </div>

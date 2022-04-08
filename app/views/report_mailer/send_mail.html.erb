@@ -1,5 +1,10 @@
-内容通報内容は下記です。
- [タイトル]<%= @mail_title %>
- [本文]<%= safe_join(@mail_content.split("\n"),tag(:br)) %>
- [通報されたユーザー]<%= @reported_user %>
- [通報したユーザー]<%= @sender %>
+通報内容は下記です。<br>
+[タイトル]<br><%= @mail_title %><br>
+[本文]<br><%= safe_join(@mail_content.split("\n"),tag(:br)) %><br>
+<% if @nurse_or_hospitai == "nurse" %>
+  [通報された病院ユーザー]<%= @reported_user %><br>
+  [通報した看護師ユーザー]<%= @sender %><br>
+<% elsif @nurse_or_hospitai == "hospital" %>
+  [通報された看護師ユーザー]<%= @reported_user %><br>
+  [通報した病院ユーザー]<%= @sender %><br>
+<% end %>
