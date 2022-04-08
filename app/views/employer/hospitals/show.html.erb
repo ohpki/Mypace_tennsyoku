@@ -42,6 +42,9 @@
           </div>
         </div>
         <div class="tabbox">
+          <div class="d-flex align-items-center justify-content-center">
+            スカウトした看護師一覧
+          </div>
           <% @scouts.each do |scout| %>
           <% if scout.nurse.job_seeking_status == true %>
             <div class="job_informations-box">
@@ -63,6 +66,9 @@
           </div>
         </div>
         <div class="tabbox">
+          <div class="d-flex align-items-center justify-content-center">
+            メッセージ一覧
+          </div>
           <% @chat_rooms.each do |chat_room| %>
           <div class="job_informations-box">
             <div class="row p-1">
