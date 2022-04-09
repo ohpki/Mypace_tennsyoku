@@ -1,8 +1,12 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h3>通報メール</h3>
-      <p>管理者へ通報メールが送信されます。内容の記入をお願い致します。</p>
+      <% if admin_signed_in? %>
+        <h3>メール内容</h3>
+      <% else %>
+        <h3>通報メール</h3>
+        <p>管理者へ通報メールが送信されます。内容の記入をお願い致します。</p>
+      <% end %>
       <%= form_with url: report_send_mail_path ,method: :get, local: true do |f| %>
     <div class="form-group">
         <%= f.label :タイトル %>
@@ -16,6 +20,7 @@
         <%= f.hidden_field :sender, :value => @sender %>
         <%= f.hidden_field :reported_user, :value => @reported_user %>
         <%= f.hidden_field :nurse_or_hospitai, :value => @nurse_or_hospitai %>
+        <%= f.hidden_field :destination, :value => @destination %>
         <%= f.submit'送信' %>
     </div>
       <% end %>

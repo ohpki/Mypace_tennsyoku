@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="d-flex align-items-center justify-content-center mt-7">
+          <h2>管理者ログイン</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-8 col-sm-4 col-md-4">
+      <div class="d-flex align-items-center justify-content-center mt-7">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :メールアドレス %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :パスワード %><br />
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
+          <div class="actions mt-3">
+            <%= f.submit "ログイン", class: "btn btn-secondary" %><br>
+            <%= link_to "管理者ゲストログイン", admin_guest_sign_in_path, method: :post, class: "btn btn-secondary mt-3" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
