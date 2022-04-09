@@ -10,7 +10,7 @@ class ReportMailer < ApplicationMailer
     # 空だった場合は看護師または病院から管理者への通報メール。
     # 中身がある場合は管理者からそのメールアドレスへ送信する。
     if destination.blank?
-      mail(to: "kie20355252@yahoo.co.jp", subject: 'Mypace_kanngoから通報メールです')
+      mail(to: ENV['ADMIN_MAIL'], subject: 'Mypace_kanngoから通報メールです')
     else
       mail(to: destination, subject: 'Mypace_kanngoの管理者からメールです')
     end
