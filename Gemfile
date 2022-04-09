@@ -60,3 +60,4 @@ gem 'kaminari'
 gem 'image_processing'
 gem 'rails-i18n'
 gem "enum_help"
+gem 'dotenv-rails'
