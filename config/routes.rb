@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
 
+  devise_for :admin, controllers: {
+  sessions: "admin/sessions"
+}
   devise_for :nurses, skip: [:passwords], controllers: {
     registrations: "worker/registrations",
     sessions: 'worker/sessions'
-
-
 }
   devise_for :hospitals, skip: [:passwords], controllers: {
     registrations: "employer/registrations",
     sessions: "employer/sessions"
 }
-
 
   root to: 'homes#top'
   get 'report/new_mail'
@@ -25,6 +25,15 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: [:new, :create, :index, :show, :update] do
     resources :chats, only: [:new, :create, :index]
   end
+  namespace :admin do
+    resources :nurses, only: [:index, :show, :destroy] do
+      get 'confirm'
+    end
+    resources :hospitls, only: [:index, :show, :destroy]
+    post '/guest_sign_in', to: 'guests#guest_sign_in'
+
+  end
+
   namespace :employer do
     get "nurses/search", to: "nurses#search"
     post '/guest_sign_in', to: 'guests#guest_sign_in'
