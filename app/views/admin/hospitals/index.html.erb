@@ -3,28 +3,28 @@
     <div class="row">
       <div class="col-12">
         <div class="d-flex align-items-center justify-content-center mt-7">
-          <h2>会員看護師一覧</h2>
-          <%= link_to "会員病院・企業一覧", admin_hospitals_path, class: "btn btn-secondary ml-3" %>
+          <h2>会員病院師一覧</h2>
+          <%= link_to "会員看護師一覧", admin_nurses_path, class: "btn btn-secondary ml-3" %>
 　　      </div>
         </div>
       </div>
    <div class="col-lg-11">
-      <% @nurses.each do |nurse| %>
+      <% @hospitals.each do |hospital| %>
         <div class="job_informations-box p-2">
           <div class="row">
             <div class="col-3">
-              <%= image_tag nurse.get_image(150, 90) %>
+              <%= image_tag hospital.get_image(150, 90) %>
             </div>
             <div class="col-7">
-              <%= link_to nurse.display_name(nurse), admin_nurse_path(nurse), class: "link-warning" %><br>
-              保有資格　　<%= nurse.qualification %><br>
-              現住所　　　　<%= nurse.address %>
+              <%= link_to hospital.name, admin_hospitals_path(hospital), class: "link-warning" %><br>
+              病院名　　<%= hospital.name %><br>
+              電話番号　　　　<%= hospital.phone_number %>
             </div>
           </div>
         </div>
       <% end %>
       <div class="d-flex align-items-center justify-content-center">
-        <%= paginate @nurses %>
+        <%= paginate @hospitals %>
       </div>
     </div>
   </div>

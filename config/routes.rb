@@ -29,7 +29,9 @@ Rails.application.routes.draw do
     resources :nurses, only: [:index, :show, :destroy] do
       get 'confirm'
     end
-    resources :hospitls, only: [:index, :show, :destroy]
+    resources :hospitals, only: [:index, :show, :destroy] do
+      get 'confirm'
+    end
     post '/guest_sign_in', to: 'guests#guest_sign_in'
 
   end
