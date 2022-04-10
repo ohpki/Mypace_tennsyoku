@@ -8,19 +8,21 @@
               <div class="col-10 ml-auto">
                 <div class="my_message">
                 <%= chat.message %>
+                <%= image_tag chat.image.variant( resize: "500x600>" ) if chat.image.attached? %>
                   <div class="my_down_triangle">
                     ▶
                   </div>
                 </div>
                 <div class="col-10 ml-auto">
                 <%= chat.created_at %>
-                <%= image_tag current_nurse.get_image(40,40), class: "rounded-circle" %></div>
+                </div>
               </div>
             <% else %>
             <!--自分は看護師で、相手の病院が送ったメッセージのため左寄せ-->
               <div class="col-10 mr-auto">
                 <div class="your_message">
                   <%= chat.message %>
+                  <%= image_tag chat.image.variant( resize: "500x600>" ) if chat.image.attached? %>
                   <div class="your_down_triangle">
                       ◀
                   </div>
@@ -37,6 +39,7 @@
                 <div class="col-10 ml-auto">
                   <div class="my_message">
                     <%= chat.message %>
+                    <%= image_tag chat.image.variant( resize: "500x600>" ) if chat.image.attached? %>
                     <div class="my_down_triangle">
                       ▶
                     </div>
@@ -51,6 +54,7 @@
                 <div class="col-10 mr-auto">
                   <div class="your_message">
                     <%= chat.message %>
+                    <%= image_tag chat.image.variant( resize: "500x600>" ) if chat.image.attached? %>
                     <div class="your_down_triangle">
                       ◀
                     </div>
