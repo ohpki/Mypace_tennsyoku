@@ -79,8 +79,12 @@
               <div class="col-sx-10 col-sm-7">
                 <% @chats = chat_room.chats %>
                 <% @chat = chat_room.chats.order(created_at: :desc).first %>
+                <% if @chat.blank? %>
+                  やりとりしたメッセージはありません。
+                <% else %>
                 <%= @chat.message.truncate(50) %><br>
                 <%= @chat.created_at %>
+                <% else %>
               </div>
             </div>
           </div>

@@ -50,6 +50,8 @@
             <%= f.text_field :message, class:"form-control" %>
           </div>
           <div class="col-2">
+            <%= f.label :"画像を送る" %>
+            <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
             <%= f.submit "送信" %>
           </div>
         </div>
