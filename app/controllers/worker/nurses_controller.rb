@@ -3,24 +3,21 @@ class Worker::NursesController < ApplicationController
   before_action :set_current_nurse
   before_action :use_name_for_nickname
 
-  def use_name_for_nickname
-  if @nurse.nickname.nil?
-    @nurse.nickname = @nurse.first_name
-  end
-  end
-
   def show
     @subscriptions = @nurse.subscriptions.order(created_at: :desc).page(params[:page]).per(3)
     @favorites = @nurse.favorites.order(created_at: :desc).page(params[:page]).per(3)
     @chat_rooms = current_nurse.chat_rooms.order(created_at: :desc).page(params[:page]).per(3)
-
   end
+
   def edit
   end
-  def update
 
-    @nurse.save(nurse_params)
-    redirect_to worker_nurses_path, notice: "プロフィールを変更しました"
+  def update
+    if @nurse.update(nurse_params)
+      redirect_to worker_nurses_path, notice: "プロフィールを変更しました"
+    else
+      render :edit
+    end
 
   end
   def destroy
@@ -34,8 +31,27 @@ class Worker::NursesController < ApplicationController
   end
 
   def nurse_params
-    params.require(:nurse).permit(:display_name_select, :first_name, :last_name, :first_name_kana, :last_name_kana, :image, :job_detail, :qualification, :select_name, :Introduction, :image)
+    params.require(:nurse)
+    .permit(
+    :job_seeking_status,
+    :nickname,
+    :address,
+    :display_name_select,
+    :first_name,
+    :last_name,
+    :first_name_kana,
+    :last_name_kana,
+    :image, :job_detail,
+    :qualification,
+    :select_name,
+    :Introduction,
+    :birthday)
   end
 
+  def use_name_for_nickname
+    if @nurse.nickname.nil?
+      @nurse.nickname = @nurse.first_name
+    end
+  end
 
 end

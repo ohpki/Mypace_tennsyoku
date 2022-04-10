@@ -3,12 +3,12 @@ class Scout < ApplicationRecord
   belongs_to :hospital
   has_one :notification, dependent: :destroy
 
-  def create_notification_scout(recipient_user, scout, hospital)
+  def create_notification_scout(hospital, nurse, scout)
         notification = Notification.new(
           sender: hospital.id,
-          hospital_id: hospital.id,
-          recipient: recipient_user.id,
+          recipient: nurse.id,
           scout_id: scout.id,
+          user_type: true,
           action: 2
         )
         notification.save if notification.valid?

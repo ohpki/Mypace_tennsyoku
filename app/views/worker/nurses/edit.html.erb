@@ -8,71 +8,73 @@
       </div>
     </div>
     <div class="d-flex align-items-center justify-content-center mt-7">
-    <%= form_with model:@nurse, url: nurse_registration_path, method: :patch, local: true do |f| %>
-    <div class="col-xs-8 col-sm-4 col-md-10">
-      <%= image_tag @nurse.get_image(300, 240),class: "rounded-circle" %><br>
-      <%= f.label :"イメージ画像" %>
-      <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
-    </div>
-    <div class="col-xs-8 col-sm-8 col-md-10">
-      <div class="form-group">
-        <%= f.label :"表示名", class: "mt-3 fw-bold" %><br>
-        <%= f.radio_button :display_name_select, true %>
-        <%= f.label :"ニックネームを使用する"  %>
-        <%= f.text_field :nickname, class:"col-md-3 col-form-label"  %><br>
 
-        <%= f.radio_button :display_name_select, false, checked: "checked" %>
-        <%= f.label :"本名を使用する" %>
-        <div class="row form-group mt-4">
-          <%= f.label :"名前", class:"col-md-3 col-form-label text-md-right" %>
-          <%= f.label :"(姓)", class:"col-md-1 col-form-label text-md-right" %>
-        <div class="col-md-3 px-md-0">
-          <%= f.text_field :first_name, placeholder: "長野", class:"form-control", autocomplete: "off" %>
-        </div>
-          <%= f.label :"(名)", class:"col-md-1 col-form-label text-md-right fw-bold" %>
-        <div class="col-md-3 px-md-0">
-          <%= f.text_field :last_name, placeholder: "景子", class:"form-control", autocomplete: "off"  %>
-        </div>
-        </div>
-        <div class="row form-group mt-2">
-            <%= f.label :"フリガナ", class:"col-md-3 col-form-label text-md-right" %>
-            <%= f.label :"(セイ)", class:"col-md-1 col-form-label text-md-right" %>
+      <%= form_with model:@nurse, url: worker_nurses_path, method: :patch, local: true do |f| %>
+      <div class="col-xs-8 col-sm-4 col-md-10">
+        <%= render 'layouts/errors', obj: @nurse %>
+        <%= image_tag @nurse.get_image(300, 240),class: "rounded-circle" %><br>
+        <%= f.label :"イメージ画像" %>
+        <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-10">
+        <div class="form-group">
+          <%= f.label :"表示名", class: "mt-3 fw-bold" %><br>
+          <%= f.radio_button :display_name_select, true %>
+          <%= f.label :"ニックネームを使用する"  %>
+          <%= f.text_field :nickname, class:"col-md-3 col-form-label"  %><br>
+
+          <%= f.radio_button :display_name_select, false, checked: "checked" %>
+          <%= f.label :"本名を使用する" %>
+          <div class="row form-group mt-4">
+            <%= f.label :"名前", class:"col-md-3 col-form-label text-md-right" %>
+            <%= f.label :"(姓)", class:"col-md-1 col-form-label text-md-right" %>
           <div class="col-md-3 px-md-0">
-            <%= f.text_field :first_name_kana, placeholder: "ナガノ", class:"form-control", autocomplete: "off" %>
+            <%= f.text_field :first_name, placeholder: "長野", class:"form-control", autocomplete: "off" %>
           </div>
-            <%= f.label :"(メイ)", class:"col-md-1 col-form-label text-md-right fw-bold" %>
+            <%= f.label :"(名)", class:"col-md-1 col-form-label text-md-right fw-bold" %>
           <div class="col-md-3 px-md-0">
-            <%= f.text_field :last_name_kana, placeholder: "ケイコ", class:"form-control", autocomplete: "off" %>
+            <%= f.text_field :last_name, placeholder: "景子", class:"form-control", autocomplete: "off"  %>
           </div>
           </div>
+          <div class="row form-group mt-2">
+              <%= f.label :"フリガナ", class:"col-md-3 col-form-label text-md-right" %>
+              <%= f.label :"(セイ)", class:"col-md-1 col-form-label text-md-right" %>
+            <div class="col-md-3 px-md-0">
+              <%= f.text_field :first_name_kana, placeholder: "ナガノ", class:"form-control", autocomplete: "off" %>
+            </div>
+              <%= f.label :"(メイ)", class:"col-md-1 col-form-label text-md-right fw-bold" %>
+            <div class="col-md-3 px-md-0">
+              <%= f.text_field :last_name_kana, placeholder: "ケイコ", class:"form-control", autocomplete: "off" %>
+            </div>
+            </div>
 
-            <%= f.label :"保有資格(複数選択可能)" %>
-            <%= f.text_field :qualification, placeholder: "看護師、准看護師、保健師、助産師等", class:"form-control" %>
-            <%= f.label :"住所" %>
-            <%= f.text_field :address, class:"form-control" %>
-            <%= f.label :"生年月日", class: "mt-3 mb-3" %>
-            <%= f.date_select :birthday, use_month_numbers: true,start_year: 1930, include_blank: true  %><br>
+              <%= f.label :"保有資格(複数選択可能)" %>
+              <%= f.text_field :qualification, placeholder: "看護師、准看護師、保健師、助産師等", class:"form-control" %>
+              <%= f.label :"住所" %>
+              <%= f.text_field :address, class:"form-control" %>
+              <%= f.label :"生年月日", class: "mt-3 mb-3" %>
+              <%= f.date_select :birthday, use_month_numbers: true,start_year: 1930, include_blank: true  %><br>
 
 
-            <%= f.radio_button :job_seeking_status, :true, checked: true %>
-            <%= f.label :job_seeking_status, "求職中", {value: :true, style: "display: inline-block;"} %>
-            <%= f.radio_button :job_seeking_status, :false %>
-            <%= f.label :job_seeking_status, "在職中", {value: :false, style: "display: inline-block;"} %>
-            ※こちらを選択すると病院・企業側からあなたの情報が見えなくなります。
-      <% if @nurse.email == "nurseguest@example.com" %>
-        <p class="text-danger font-weight-bold">※ゲストユーザーはプロフィールの編集、退会はできません。<p>
-      <% else %>
-        <div class="row">
-          <div class="col-lg-6">
-            <%= f.submit class: "btn btn-secondary mt-3" %>
+              <%= f.radio_button :job_seeking_status, :true, checked: true %>
+              <%= f.label :job_seeking_status, "求職中", {value: :true, style: "display: inline-block;"} %>
+              <%= f.radio_button :job_seeking_status, :false %>
+              <%= f.label :job_seeking_status, "在職中", {value: :false, style: "display: inline-block;"} %>
+              ※こちらを選択すると病院・企業側からあなたの情報が見えなくなります。
+        <% if @nurse.email == "nurseguest@example.com" %>
+          <p class="text-danger font-weight-bold">※ゲストユーザーはプロフィールの編集、退会はできません。<p>
+        <% else %>
+          <div class="row">
+            <div class="col-lg-6">
+              <%= f.submit class: "btn btn-secondary mt-3" %>
 
-          </div>
-          <div class="col-lg-6">
-            <%= link_to "退会する", worker_nurses_quit_path, class: "btn btn-danger mt-3" %>
-          </div>
-          </div>
+            </div>
+            <div class="col-lg-6">
+              <%= link_to "退会する", worker_nurses_quit_path, class: "btn btn-danger mt-3" %>
+            </div>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
         </div>
       </div>
     </div>

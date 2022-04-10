@@ -21,8 +21,8 @@ class Chat < ApplicationRecord
     if nurse
       notification = Notification.new(
           sender: myself,
-          nurse_id: myself,
           recipient: you,
+          user_type: false,
           chst_room_id: contents,
           action: 0
         )
@@ -31,8 +31,8 @@ class Chat < ApplicationRecord
     elsif hospital
       notification = Notification.new(
           sender: myself,
-          hospital_id: myself,
           recipient: you,
+          user_type: true,
           chst_room_id: contents,
           action: 0
         )

@@ -13,8 +13,8 @@ class Employer::HospitalsController < ApplicationController
   end
 
   def update
-    @hospital.update(hospital_parameters)
-    if redirect_to employer_hospitals_path, notice: "プロフィールを更新しました"
+    if@hospital.update(hospital_parameters)
+      redirect_to employer_hospitals_path, notice: "プロフィールを更新しました"
     else
       render :edit
     end
@@ -27,6 +27,7 @@ class Employer::HospitalsController < ApplicationController
 
   def quit
   end
+
   private
   def hospital_parameters
     params.require(:hospital).permit(:name, :postal_code, :address, :nickname, :phone_number, :Introduction, :image, :email)

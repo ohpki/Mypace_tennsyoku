@@ -4,12 +4,12 @@ class Subscription < ApplicationRecord
   belongs_to :notification, dependent: :destroy, optional: true
 
 
-  def create_notification_subscription(myself, contents, you)
+  def create_notification_subscription(nurse, hospital, job_information)
         notification = Notification.new(
-          sender: myself,
-          nurse_id: myself,
-          recipient: you,
-          job_information_id: contents,
+          sender: nurse,
+          recipient: hospital,
+          user_type: false,
+          job_information_id: job_information,
           action: 1
         )
         notification.save if notification.valid?

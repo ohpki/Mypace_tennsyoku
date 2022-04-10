@@ -1,10 +1,11 @@
 class Worker::JobInformationsController < ApplicationController
+
   def index
     @job_informations = JobInformation.where(job_offer_status: true).order(created_at: :desc).page(params[:page]).per(10)
   end
-  def show
 
-      @job_information = JobInformation.find(params[:id])
+  def show
+    @job_information = JobInformation.find(params[:id])
     if nurse_signed_in?
       @favorite = Favorite.new
       if @subscription = current_nurse.subscriptions.find_by(job_information_id: @job_information)
@@ -13,6 +14,7 @@ class Worker::JobInformationsController < ApplicationController
       end
     end
   end
+
   def search
     @job_informations = JobInformation.where("title LIKE?","%#{params[:word]}%")
     .or(JobInformation.where("work_style LIKE?", "%#{params[:word]}%"))
