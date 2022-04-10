@@ -17,4 +17,9 @@ class Admin::HospitalsController < ApplicationController
     hospital.destroy
     redirect_to admin_hospitals_path, notice: "退会処理が完了しました"
   end
+
+  def search
+    @hospital = Hospital.find_by("id LIKE?","#{params[:word]}")
+    render :show
+  end
 end

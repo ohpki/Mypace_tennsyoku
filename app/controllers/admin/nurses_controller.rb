@@ -17,4 +17,10 @@ class Admin::NursesController < ApplicationController
     nurse.destroy
     redirect_to admin_nurses_path, notice: "退会処理が完了しました"
   end
+
+  def search
+    @nurse = Nurse.find_by("id LIKE?","#{params[:word]}")
+    render :show
+
+  end
 end

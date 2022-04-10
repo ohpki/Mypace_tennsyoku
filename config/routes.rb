@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
 
   devise_for :admin, controllers: {
-  sessions: "admin/sessions"
+  sessions: 'admin/sessions'
 }
   devise_for :nurses, skip: [:passwords], controllers: {
-    registrations: "worker/registrations",
+    registrations: 'worker/registrations',
     sessions: 'worker/sessions'
 }
   devise_for :hospitals, skip: [:passwords], controllers: {
-    registrations: "employer/registrations",
-    sessions: "employer/sessions"
+    registrations: 'employer/registrations',
+    sessions: 'employer/sessions'
 }
 
   root to: 'homes#top'
@@ -33,11 +33,12 @@ Rails.application.routes.draw do
       get 'confirm'
     end
     post '/guest_sign_in', to: 'guests#guest_sign_in'
-
+    get 'search/nurse', to: 'nurses#search'
+    get 'search/hospital', to: 'hospitals#search'
   end
 
   namespace :employer do
-    get "nurses/search", to: "nurses#search"
+    get 'nurses/search', to: 'nurses#search'
     post '/guest_sign_in', to: 'guests#guest_sign_in'
     resources :nurses, only: [:show, :index] do
       resources :scouts, only: [:new, :index, :create, :destroy]

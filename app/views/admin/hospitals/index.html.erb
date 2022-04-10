@@ -5,6 +5,11 @@
         <div class="d-flex align-items-center justify-content-center mt-7">
           <h2>会員病院師一覧</h2>
           <%= link_to "会員看護師一覧", admin_nurses_path, class: "btn btn-secondary ml-3" %>
+          <%= form_with url: admin_search_hospital_path, local: true, method: :get do |f| %>
+            <%= f.label :"ID:", class: "ml-3" %>
+            <%= f.text_field :word %>
+          <%= f.submit "検索" %>
+          <% end %>
 　　      </div>
         </div>
       </div>
@@ -16,7 +21,7 @@
               <%= image_tag hospital.get_image(150, 90) %>
             </div>
             <div class="col-7">
-              <%= link_to hospital.name, admin_hospitals_path(hospital), class: "link-warning" %><br>
+              <%= link_to hospital.name, admin_hospital_path(hospital), class: "link-warning" %><br>
               病院名　　<%= hospital.name %><br>
               電話番号　　　　<%= hospital.phone_number %>
             </div>

@@ -5,6 +5,11 @@
         <div class="d-flex align-items-center justify-content-center mt-7">
           <h2>会員看護師一覧</h2>
           <%= link_to "会員病院・企業一覧", admin_hospitals_path, class: "btn btn-secondary ml-3" %>
+          <%= form_with url: admin_search_nurse_path, local: true, method: :get do |f| %>
+            <%= f.label :"ID:", class: "ml-3" %>
+            <%= f.text_field :word %>
+            <%= f.submit "検索" %>
+          <% end %>
 　　      </div>
         </div>
       </div>
