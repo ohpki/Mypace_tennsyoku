@@ -11,7 +11,8 @@
     <%= form_with model:@nurse, url: nurse_registration_path, method: :patch, local: true do |f| %>
     <div class="col-xs-8 col-sm-4 col-md-10">
       <%= image_tag @nurse.get_image(300, 240),class: "rounded-circle" %><br>
-
+      <%= f.label :"イメージ画像" %>
+      <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
     </div>
     <div class="col-xs-8 col-sm-8 col-md-10">
       <div class="form-group">

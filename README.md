@@ -52,11 +52,6 @@
 
 - 求職中の看護師が転職先を検討する際に利用
 - 病院が求職中の看護師を探し、スカウトする際に使用
--
-
-###　利用方法
-通報機能をご利用の際はcomfig/environment/production.rbの〇行目のuser_nam：sample1@gmail.comに送り主emailを、その下のパスワードにgmailアプリパスワードを記載して下さい。
-app/mailers/report_mailerのsample2@gmail.comの部分を管理者のemailに変更して下さい。
 
 ## 設計書
 

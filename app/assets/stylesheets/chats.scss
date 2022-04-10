@@ -36,3 +36,11 @@
   left: -10px;
   color: #fff;
 }
+
+@media screen and (max-width:768px) {
+  .message-image {
+  width: 200px;
+  height: 200px;
+
+}
+}
