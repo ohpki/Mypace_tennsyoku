@@ -18,16 +18,16 @@
       備考<br>
       <%= @nurse.introduction %>
     </div>
-      <div class="row align-items-center justify-content-center">
-        <div class="col-3">
-          <%= form_with url: report_new_mail_path, method: :get, local: true do |f| %>
-            <%= f.hidden_field :destination, :value => @nurse.email %>
-            <%= f.submit "メールを送る", class: "btn btn-secondary" %>
-          <% end %>
-        </div>
-        <div class="col-3">
-          <%= link_to "退会処理", admin_nurse_confirm_path(@nurse), class: "btn btn-danger" %>
-        </div>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-3">
+        <%= form_with url: report_new_mail_path, method: :get, local: true do |f| %>
+          <%= f.hidden_field :destination, :value => @nurse.email %>
+          <%= f.submit "メールを送る", class: "btn btn-secondary" %>
+        <% end %>
+      </div>
+      <div class="col-3">
+        <%= link_to "退会処理", admin_nurse_confirm_path(@nurse), class: "btn btn-danger" %>
+      </div>
     </div>
   </div>
 </div>

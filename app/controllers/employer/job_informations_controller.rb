@@ -34,7 +34,6 @@ class Employer::JobInformationsController < ApplicationController
     if @job_information.update(job_information_params)
       redirect_to employer_job_information_path(@job_information), notice: "求人情報が更新されました"
     else
-      @job_information = JobInformation.new
       @hospital = current_hospital
       render :edit
     end

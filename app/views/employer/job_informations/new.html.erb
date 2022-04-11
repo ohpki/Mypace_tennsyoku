@@ -7,12 +7,10 @@
           <%= render 'layouts/errors', obj: @job_information %>
         </div>
       </div>
-
     </div>
       <%= form_with model:@job_information, method: :post, url: "/employer/job_informations", local:true do |f| %>
         <%= render partial: 'form', locals: { :f => f, job_information: @job_information, hospital: @hospital} %>
         <%= f.submit "作成", class: "btn btn-secondary w-25 mt-3" %>
       <% end %>
-    </div>
   </div>
 </div>

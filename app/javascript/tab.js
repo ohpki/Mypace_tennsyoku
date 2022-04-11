@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
     // ↓タブをクリックした時の処理↓
     $('.profile-tab').click(function(){
         // ↓現在アクティブなタブを切り替え↓
@@ -14,8 +14,15 @@ $(function() {
     });
 });
 
-$(function () {
+$(document).on('turbolinks:load', function() {
     $('.notification_btn').on('click', () => {
         $('.notification_index').toggle();
     });
 });
+
+$(window).on('turbolinks:load', function() {
+var top = $('#message_form').offset().top;
+console.log(top);
+$('html').animate({scrollTop:top}, 'fast');
+});
+

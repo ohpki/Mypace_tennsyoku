@@ -8,7 +8,6 @@
       </div>
     </div>
     <div class="d-flex align-items-center justify-content-center mt-7">
-
       <%= form_with model:@nurse, url: worker_nurses_path, method: :patch, local: true do |f| %>
       <div class="col-xs-8 col-sm-4 col-md-10">
         <%= render 'layouts/errors', obj: @nurse %>

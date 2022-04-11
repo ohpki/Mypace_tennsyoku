@@ -13,7 +13,6 @@
       <%= link_to "編集する", edit_employer_hospitals_path, class: "btn btn-secondary w-75 mt-3" %>
     </div>
     <div class="col-lg-8 ml-auto">
-
     <div class="profile">
       <ul class="profile-list">
         <li class="profile-tab box-active"><i class="far fa-copy"></i>求人情報</li>
@@ -23,10 +22,10 @@
       <div class="tabbox-contents">
         <div class="tabbox box-show">
           <div class="d-flex align-items-center justify-content-center">
-          投稿した求人情報一覧
-          <%= link_to new_employer_job_information_path, class: "btn btn-secondary w-25 justify-content-center ml-lg-5" do %>
-            <i class="far fa-edit"></i>新規作成
-          <% end %>
+            投稿した求人情報一覧
+            <%= link_to new_employer_job_information_path, class: "btn btn-secondary w-25 justify-content-center ml-lg-5" do %>
+              <i class="far fa-edit"></i>新規作成
+            <% end %>
           </div>
           <% @job_informations.each do |job_information| %>
             <div class="job_informations-box">

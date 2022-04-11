@@ -2,10 +2,10 @@
   <div class="row align-items-center justify-content-center">
     <div class="row align-items-center justify-content-center">
       <div class="col-lg-6">
-          <% if nurse_signed_in? %>
-            <h2><%= @chat_room.hospital.name %>さんとのメッセージ</h2>
-            <div id="errors"><%= render 'layouts/errors', obj: @chat %></div>
-            <div class="col-lg-2">
+        <% if nurse_signed_in? %>
+          <h2><%= @chat_room.hospital.name %>さんとのメッセージ</h2>
+          <div id="errors"><%= render 'layouts/errors', obj: @chat %></div>
+          <div class="col-lg-2">
             <% if @chat_room.rejection == "nurse_rejection" %>
               <%= form_with model:@chat_room, url: chat_room_path(@chat_room), methot: :post, local: true do |f| %>
                 <%= f.hidden_field :rejection, :value => "allow_messages" %>
@@ -25,17 +25,17 @@
               <%= form_with model:@chat_room, url: chat_room_path(@chat_room), methot: :post, local: true do |f| %>
                 <%= f.hidden_field :rejection, :value => "allow_messages" %>
                 <%= f.submit "メッセージを許可", class: "btn btn-secondary" %>
-          <% end %>
+            <% end %>
           <% elsif @chat_room.rejection == "allow_messages" %>
             <%= form_with model:@chat_room, url: chat_room_path(@chat_room), methot: :post, local: true do |f| %>
               <%= f.hidden_field :rejection, :value => "hospital_rejection" %>
               <%= f.submit "メッセージを拒否", class: "btn btn-danger ml-md-5" %>
             <% end %>
           <% end %>
-          <% end %>
+        <% end %>
       </div>
     </div>
-    <div id="chats_index">
+    <div id="chats_index" id="area">
       <%= render "chats/index", chats: @chats, chat_room: @chat_room, chat: @chat %>
     </div>
     <% if @chat_room.rejection == "allow_messages" %>
@@ -46,12 +46,13 @@
           <%= f.hidden_field :sender, value: :false %>
         <% end %>
         <div class="row align-items-center justify-content-center">
-          <div class="col-8">
+          <div id="message_form" class='col-8'>
             <%= f.text_field :message, class:"form-control" %>
           </div>
           <div class="col-2">
-            <%= f.label :"画像を送る" %>
-            <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
+           <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
+          </div>
+          <div class="col-2">
             <%= f.submit "送信" %>
           </div>
         </div>

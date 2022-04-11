@@ -1,7 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-
       <% if nurse_signed_in? %>
         <ul class="navbar-nav mt-auto">
             <%= link_to image_tag("btn-about.png", width: '200', alt: "サイトについて"), homes_about_path, class: "ml-5" %>
@@ -46,10 +45,7 @@
             <%= link_to image_tag("btn-new.png", width: '200', alt: "新規登録"), root_path, class: "mx-3" %>
             <%= link_to image_tag("btn-sign-in.png", width: '200', alt: "ログイン"), homes_confirm_path, class: "mx-3" %>
           </ul>
-          <% end %>
-          </div>
-
-
+      <% end %>
     </div>
-  </div>
+  </nav>
 </header>

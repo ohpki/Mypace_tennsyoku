@@ -29,7 +29,7 @@
     <div class="row align-items-center justify-content-center">
       <% if nurse_signed_in? %>
         <% if @subscription.job_information_id == @job_information.id %>
-          <div class="col-lg-3">
+        <div class="col-lg-3">
           <%= link_to "応募を取り消す", worker_subscription_path(@subscription.id), method: :delete, class: "btn btn-secondary mt-3" %>
         <% else %>
           <div class="col-lg-2">
@@ -38,8 +38,8 @@
               <%= f.submit "応募する", class: "btn btn-secondary mt-3" %>
             <% end %>
         <% end %>
-      </div>
+          </div>
       <% end %>
-    </div>
+        </div>
   </div>
 </div>

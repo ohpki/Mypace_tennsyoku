@@ -15,11 +15,9 @@
         <div>
           <p class="font-weight-bold"><本文></p> <%= safe_join(@mail_content.split("\n"),tag(:br)) %>
         </div>
-        <% else %>
+          <% else %>
           <h3>管理者へ下記内容をメールで報告しました。</h3>
-        </div>
       </div>
-    </div>
       <div class="col-xs-8 col-sm-4 col-md-4">
         <p>貴重なご意見ありがとうございます。<br>内容を確認後、適切な対応を検討いたします。</p>
         <div class="small_margin_top">
@@ -38,8 +36,8 @@
             <通報された看護師ユーザー><%= @reported_user %><br>
             <通報した病院ユーザー><%= @sender %><br>
           <% end %>
+          <% end %>
         </div>
-    </div>
+      </div>
   </div>
 </div>
-<% end %>

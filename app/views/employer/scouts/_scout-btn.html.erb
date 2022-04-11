@@ -5,8 +5,8 @@
       <%= f.hidden_field :sender, value: :current_hospital %>
       <%= f.hidden_field :recipient, value: :nurse %>
       <%= f.hidden_field :action, value: :"2" %>
-<% end %>
-  <% else %>
+    <% end %>
+<% else %>
     <%= link_to "スカウトを取り消す", employer_nurse_scout_path(nurse), method: :delete, class: "btn btn-secondary" %>
   <% end %>
 <% end %>
