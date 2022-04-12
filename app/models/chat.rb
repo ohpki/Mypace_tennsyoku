@@ -8,30 +8,15 @@ class Chat < ApplicationRecord
     self.image.attached?
   end
 
-  def create_notification_chat(myself, contents, you, nurse, hospital)
-    # メッセージの送信者である自分が看護師だったらsenderとnurse_idに自分のidを保存
-    # 通知の受信者が病院の場合はuser_type=falseにする
-    if nurse
+  def create_notification_chat(nurse, contents, hospital, type)
       notification = Notification.new(
-          sender: myself,
-          recipient: you,
-          user_type: false,
+          nurse_id: nurse,
+          hospital_id: hospital,
+          user_type: type,
           chst_room_id: contents,
           action: 0
         )
         notification.save if notification.valid?
-     # メッセージの送信者である自分が病院だったらsenderとhospital_idに自分のidを保存
-     # 通知の受信者が看護師の場合はuser_type=trueにする
-    elsif hospital
-      notification = Notification.new(
-          sender: myself,
-          recipient: you,
-          user_type: true,
-          chst_room_id: contents,
-          action: 0
-        )
-        notification.save if notification.valid?
-    end
   end
 
 end

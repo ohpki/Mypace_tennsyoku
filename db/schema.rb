@@ -107,8 +107,8 @@ ActiveRecord::Schema.define(version: 2022_04_08_081202) do
 
   create_table "notifications", force: :cascade do |t|
     t.boolean "user_type"
-    t.integer "sender", null: false
-    t.integer "recipient", null: false
+    t.integer "nurse_id", null: false
+    t.integer "hospital_id", null: false
     t.integer "action", null: false
     t.integer "chst_room_id"
     t.integer "job_information_id"

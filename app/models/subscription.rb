@@ -6,8 +6,8 @@ class Subscription < ApplicationRecord
 
   def create_notification_subscription(nurse, hospital, job_information)
         notification = Notification.new(
-          sender: nurse,
-          recipient: hospital,
+          nurse_id: nurse,
+          hospital_id: hospital,
           user_type: false,
           job_information_id: job_information,
           action: 1

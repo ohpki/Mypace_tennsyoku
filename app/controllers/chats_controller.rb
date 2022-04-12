@@ -11,24 +11,19 @@ class ChatsController < ApplicationController
     @chat.chat_room_id = params[:chat_room_id]
     if @chat.save
       @chat_room = ChatRoom.find_by(id: @chat.chat_room_id)
+      nurse_id = @chat_room.nurse_id
+      hospital_id = @chat_room.hospital_id
       @chats = Chat.where(chat_room_id: @chat_room.id)
+      # 通知の受信者が看護師ならuser_type=trueに、病院ならfalseに
       if nurse_signed_in?
-        myself = current_nurse.id
-        you = @chat_room.hospital_id
-
+        user_type = false
       elsif hospital_signed_in?
-        myself = current_hospital.id
-        you = @chat_room.nurse_id
-
+        user_type = true
       end
-        @chat.create_notification_chat(myself, @chat.chat_room_id, you, nurse_signed_in?, hospital_signed_in?)
+    end
+        @chat.create_notification_chat(nurse_id, @chat.chat_room_id, hospital_id, user_type)
         @chat_room = ChatRoom.find(params[:chat_room_id])
         @chats = Chat.where(chat_room_id: @chat_room.id)
-    end
-    # メッセージ送信した自分が看護師だった場合、メッセージ送信者は自分(看護師)、受診者は病院
-    # メッセージ送信した自分が病院だった場合、メッセージ送信者は自分(病院)、受診者は看護師
-    # で通知を作成する
-
   end
 
   private

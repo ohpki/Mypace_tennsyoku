@@ -17,7 +17,7 @@
       <% elsif notification.action == "subscription" %>
         <%= link_to notification.action_i18n, "job_informations/#{notification.job_information_id}", class: "text-warning" %>が届いています。<br>
         <% else %>
-      <%= link_to notification.action_i18n, worker_hospital_path(notification.sender), class: "text-warning" %>が届いています。<br>
+      <%= link_to notification.action_i18n, worker_hospital_path(notification.hospital_id), class: "text-warning" %>が届いています。<br>
       <% end %>
     <% end %>
     <div class="d-flex align-items-center justify-content-center">

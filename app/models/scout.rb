@@ -5,8 +5,8 @@ class Scout < ApplicationRecord
 
   def create_notification_scout(hospital, nurse, scout)
         notification = Notification.new(
-          sender: hospital.id,
-          recipient: nurse.id,
+          hospital_id: hospital.id,
+          nurse_id: nurse.id,
           scout_id: scout.id,
           user_type: true,
           action: 2

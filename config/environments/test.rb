@@ -57,4 +57,18 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  # 下記のsample1@gmail.comに送り主となるメールアドレスを入力して下さい。
+  # gmailで設定しているので、２段階認証のパスワードをsamplesampleの箇所に
+  # 入力して下さい。
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               'gmail.com',
+    user_name:            ENV['MAIL_USER_NAME'],
+    password:             ENV['MAIL_PASSWORD'],
+    authentication:       'login',
+    enable_starttls_auto: true
+  }
 end

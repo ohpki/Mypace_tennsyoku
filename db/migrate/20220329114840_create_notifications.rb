@@ -3,8 +3,8 @@ class CreateNotifications < ActiveRecord::Migration[6.1]
     create_table :notifications do |t|
       # user_typeがtrueなら看護師宛ての通知　falseなら病院宛ての通知
       t.boolean :user_type
-      t.integer :sender, null: false
-      t.integer :recipient, null: false
+      t.integer :nurse_id, null: false
+      t.integer :hospital_id, null: false
       t.integer :action, null: false
       t.integer :chst_room_id
       t.integer :job_information_id
