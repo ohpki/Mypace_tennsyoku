@@ -19,8 +19,11 @@ class Admin::NursesController < ApplicationController
   end
 
   def search
-    @nurse = Nurse.find_by("id LIKE?","#{params[:word]}")
-    render :show
+    if @nurse = Nurse.find_by("id LIKE?","#{params[:word]}").blank?
+      redirect_to admin_nurses_path, notice: "IDに該当するユーザーがいません"
+    else
+      render :show
+    end
 
   end
 end

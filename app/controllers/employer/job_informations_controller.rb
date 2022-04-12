@@ -41,8 +41,11 @@ class Employer::JobInformationsController < ApplicationController
   end
 
   def destroy
+
     @job_information = JobInformation.find(params[:id])
+
     @job_information.destroy
+
     redirect_to employer_hospitals_path, notice: "求人情報は消去されました"
 
   end

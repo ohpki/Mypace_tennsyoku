@@ -1,0 +1,24 @@
+
+[1mFrom:[0m /home/ec2-user/environment/Mypace_tennsyoku/app/controllers/chats_controller.rb:26 ChatsController#create:
+
+     [1;34m9[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m10[0m:   @chat = [1;34;4mChat[0m.new(chat_params)
+    [1;34m11[0m:   @chat.chat_room_id = params[[33m:chat_room_id[0m]
+    [1;34m12[0m:   [32mif[0m @chat.save
+    [1;34m13[0m:     @chat_room = [1;34;4mChatRoom[0m.find_by([35mid[0m: @chat.chat_room_id)
+    [1;34m14[0m:     nurse_id = @chat_room.nurse_id
+    [1;34m15[0m:     hospital_id = @chat_room.hospital_id
+    [1;34m16[0m:     @chats = [1;34;4mChat[0m.where([35mchat_room_id[0m: @chat_room.id)
+    [1;34m17[0m:     [1;34m# 通知の受信者が看護師ならuser_type=trueに、病院ならfalseに[0m
+    [1;34m18[0m:     [32mif[0m nurse_signed_in?
+    [1;34m19[0m:       user_type = [1;36mfalse[0m
+    [1;34m20[0m:     [32melsif[0m hospital_signed_in?
+    [1;34m21[0m:       user_type = [1;36mtrue[0m
+    [1;34m22[0m:     [32mend[0m
+    [1;34m23[0m:   [32mend[0m
+    [1;34m24[0m:       @chat.create_notification_chat(nurse_id, @chat.chat_room_id, hospital_id, user_type)
+    [1;34m25[0m:       binding.pry
+ => [1;34m26[0m:       @chat_room = [1;34;4mChatRoom[0m.find(params[[33m:chat_room_id[0m])
+    [1;34m27[0m:       @chats = [1;34;4mChat[0m.where([35mchat_room_id[0m: @chat_room.id)
+    [1;34m28[0m: [32mend[0m
+
