@@ -2,8 +2,12 @@ class ChatsController < ApplicationController
 
   def index
     @chat_room = ChatRoom.find(params[:chat_room_id])
-    @chats = Chat.where(chat_room_id: @chat_room.id)
-    @chat = Chat.new
+    if @chat_room.nurse_id == current_nurse.id || @chat_room.hospital_id == current_hospital.id
+      @chats = Chat.where(chat_room_id: @chat_room.id)
+      @chat = Chat.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
