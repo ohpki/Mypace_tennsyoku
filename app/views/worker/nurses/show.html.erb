@@ -9,7 +9,7 @@
     </div>
     <div class="col-lg-3 ml-auto">
       <%#= image_tag Nurse.find(current_nurse.id).get_image(300, 240), class: "rounded-circle" %><br>
-      <!--<p>画像</p>-->
+      <!--<p>画像,</p>-->
   <% if @nurse.image.attached? %>
     <%= image_tag @nurse.image, size: "200x200", class: "rounded-circle" %>
   <% else %>
