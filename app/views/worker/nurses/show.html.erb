@@ -13,7 +13,7 @@
   <% if @nurse.image.attached? %>
     <%= image_tag @nurse.image, size: "200x200", class: "rounded-circle" %>
   <% else %>
-    <%= image_tag 'no-image-nurse.png', size: "200x200", class: "rounded-circle" %>
+    <%= image_tag 'no-image-nurse.jpg', size: "200x200", class: "rounded-circle" %>
   <% end %>
 
       <h4><%= @nurse.display_name(@nurse) %></h4>
