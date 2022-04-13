@@ -8,13 +8,13 @@
       </div>
     </div>
     <div class="col-lg-3 ml-auto">
-      <%= image_tag current_nurse.get_image(300, 240), class: "rounded-circle" %><br>
+      <%#= image_tag Nurse.find(current_nurse.id).get_image(300, 240), class: "rounded-circle" %><br>
       <!--<p>画像</p>-->
-  <%# if @nurse.image.attached? %>
-    <%#= image_tag @nurse.image, size: "200x200", class: "rounded-circle" %>
-  <%# else %>
-    <%#= image_tag 'no-image-nurse.png', size: "200x200", class: "rounded-circle" %>
-  <%# end %>
+  <% if @nurse.image.attached? %>
+    <%= image_tag @nurse.image, size: "200x200", class: "rounded-circle" %>
+  <% else %>
+    <%= image_tag 'no-image-nurse.png', size: "200x200", class: "rounded-circle" %>
+  <% end %>
 
       <h4><%= @nurse.display_name(@nurse) %></h4>
       <%= link_to "編集する", edit_worker_nurses_path, class: "btn btn-secondary w-75 mt-3" %>

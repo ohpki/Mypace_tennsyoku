@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: [:new, :create, :index, :show, :update] do
     resources :chats, only: [:new, :create, :index]
   end
-  
   namespace :admin do
     resources :nurses, only: [:index, :show, :destroy] do
       get 'confirm'

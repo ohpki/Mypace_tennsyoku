@@ -19,7 +19,7 @@ class Nurse < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no-image-nurse.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image.variant(resize_to_limit: [width, height]).processed
+      image.variant(resize_to_limit: [width, height]).processed
   end
 
 # display_name_selectがtrueならニックネームを、falseなら苗字＋名前を表示
