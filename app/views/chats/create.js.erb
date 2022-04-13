@@ -1,3 +1,4 @@
 $("#chats_index").html("<%= j(render '/chats/index', chats: @chats, chat_room: @chat_room, chat: @chat) %>");
 $("#chat_message").val('');
+$("#chat_image").val('');
 $('#errors').html("<%= j(render 'layouts/errors', obj: @chat) %>");
