@@ -20,6 +20,7 @@ $(document).on('turbolinks:load', function() {
     });
 });
 
+
 $(window).on('turbolinks:load', function() {
 var top = $('#message_form').offset().top;
 console.log(top);

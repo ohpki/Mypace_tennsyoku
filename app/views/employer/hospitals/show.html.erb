@@ -10,9 +10,9 @@
     <div class="col-lg-3 ml-auto">
       <%#= image_tag @hospital.get_image(250, 150) %>
       <% if @hospital.image.attached? %>
-        <%= image_tag @hospital.image, size: "200x200" %>
+        <%= image_tag @hospital.image, size: "250x150" %>
       <% else %>
-        <%= image_tag 'no-image-hospital.jpg', size: "200x200" %>
+        <%= image_tag 'no-image-hospital.jpg', size: "250x150" %>
       <% end %>
       <h4><%= @hospital.name %></h4>
       <%= link_to "編集する", edit_employer_hospitals_path, class: "btn btn-secondary w-75 mt-3" %>
@@ -87,7 +87,7 @@
                   やりとりしたメッセージはありません。
                 <% else %>
                 <%= @chat.message.truncate(50) %><br>
-                <%= @chat.created_at %>
+                <%= @chat.created_at.strftime("%Y-%m-%d　%H:%M") %>
                 <% end %>
               </div>
             </div>

@@ -1,0 +1,5 @@
+<% if notifications.where(checked: false).exists? %>
+    <%= image_tag "btn-notification2.png" %>
+  <% else %>
+    <%= image_tag "btn-notification1.png" %>
+  <% end %>

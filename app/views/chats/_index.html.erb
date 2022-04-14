@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="col-10 ml-auto">
-          <%= chat.created_at %>
+          <%= chat.created_at.strftime("%Y-%m-%d　%H:%M") %>
           <%= image_tag current_nurse.get_image(40,40), class: "rounded-circle" %>
         </div>
       </div>
@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="col-10 mr-auto">
-          <%= chat.created_at %>
+          <%= chat.created_at.strftime("%Y-%m-%d　%H:%M") %>
           <%= image_tag @chat_room.hospital.get_image(40,40), class: "rounded-circle" %>
         </div>
       </div>
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="col-10 ml-auto">
-          <%= chat.created_at %>
+          <%= chat.created_at.strftime("%Y-%m-%d　%H:%M") %>
           <%= image_tag current_hospital.get_image(40,40), class: "rounded-circle" %>
         </div>
       </div>
@@ -61,7 +61,7 @@
           </div>
         </div>
         <div class="col-10 mr-auto">
-          <%= chat.created_at %>
+          <%= chat.created_at.strftime("%Y-%m-%d　%H:%M") %>
           <%= image_tag @chat_room.nurse.get_image(40,40), class: "rounded-circle" %>
         </div>
       </div>
