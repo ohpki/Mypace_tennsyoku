@@ -15,7 +15,7 @@ class DeviseCreateNurses < ActiveRecord::Migration[6.1]
       t.string :address
       t.string :qualification
       t.boolean :job_seeking_status, default: "true"
-      t.string :birthday
+      t.date :birthday
       t.text :introduction
 
 

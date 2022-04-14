@@ -18,7 +18,7 @@
           <%= link_to nurse.display_name(nurse), employer_nurse_path(nurse.id), class: "link-warning" %><br>
           保有資格　　<%= nurse.qualification %><br>
           現住所　　　　<%= nurse.address %><br>
-          <%= subscription.created_at %>
+          <%= subscription.created_at.strftime("%Y-%m-%d　%H:%M") %>
         </div>
       </div>
     </div>

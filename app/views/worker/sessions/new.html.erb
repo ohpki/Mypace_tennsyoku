@@ -19,7 +19,8 @@
 
 
         <div class="actions">
-          <%= f.submit "ログイン", class: "btn btn-secondary w-75 ml-4 mt-5" %>
+          <%= f.submit "ログイン", class: "btn btn-secondary w-75 mt-5" %>
+          <%= link_to "ゲストログイン", worker_guest_sign_in_path, method: :post, class: "btn btn-secondary w-75 mt-3" %>
         </div>
       <% end %>
       </div>

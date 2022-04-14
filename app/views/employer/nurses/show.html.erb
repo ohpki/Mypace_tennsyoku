@@ -9,7 +9,11 @@
       </div>
     </div>
     <div class="col-lg-3 ml-auto">
-      <%= image_tag @nurse.get_image(300, 240), class: "rounded-circle" %><br>
+      <% if @nurse.image.attached? %>
+        <%= image_tag @nurse.image, size: "200x200", class: "rounded-circle" %>
+      <% else %>
+        <%= image_tag 'no-image-nurse.jpg', size: "200x200", class: "rounded-circle" %>
+      <% end %>
     </div>
     <div class="col-lg-8">
       資格　　　<%= @nurse.qualification %><br>

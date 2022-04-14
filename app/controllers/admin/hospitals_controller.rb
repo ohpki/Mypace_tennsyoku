@@ -20,6 +20,11 @@ class Admin::HospitalsController < ApplicationController
 
   def search
     @hospital = Hospital.find_by("id LIKE?","#{params[:word]}")
-    render :show
+    if @hospital.blank?
+      redirect_to admin_hospitals_path, notice: "IDに該当するユーザーがいません"
+    else
+      render :show
+    end
+
   end
 end

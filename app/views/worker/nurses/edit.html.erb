@@ -11,7 +11,7 @@
       <%= form_with model:@nurse, url: worker_nurses_path, method: :patch, local: true do |f| %>
       <div class="col-xs-8 col-sm-4 col-md-10">
         <%= render 'layouts/errors', obj: @nurse %>
-        <%= image_tag @nurse.get_image(300, 240),class: "rounded-circle" %><br>
+        <%#= image_tag @nurse.get_image(300, 240),class: "rounded-circle" %><br>
         <%= f.label :"イメージ画像" %>
         <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
       </div>
@@ -59,6 +59,7 @@
               <%= f.label :job_seeking_status, "求職中", {value: :true, style: "display: inline-block;"} %>
               <%= f.radio_button :job_seeking_status, :false %>
               <%= f.label :job_seeking_status, "在職中", {value: :false, style: "display: inline-block;"} %>
+
               ※こちらを選択すると病院・企業側からあなたの情報が見えなくなります。
         <% if @nurse.email == "nurseguest@example.com" %>
           <p class="text-danger font-weight-bold">※ゲストユーザーはプロフィールの編集、退会はできません。<p>

@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 2022_04_08_081202) do
     t.string "address"
     t.string "qualification"
     t.boolean "job_seeking_status", default: true
-    t.string "birthday"
+    t.date "birthday"
     t.text "introduction"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
