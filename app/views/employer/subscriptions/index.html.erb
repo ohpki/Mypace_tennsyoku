@@ -12,7 +12,11 @@
       <div class="row">
         <div class="col-3">
           <% nurse = Nurse.find_by(id: subscription.nurse_id) %>
-          <%= image_tag nurse.get_image(150, 90), class: "rounded-circle" %>
+          <% if nurse.image.attached? %>
+            <%= image_tag nurse.image, size: "130x90", class: "rounded-circle" %>
+          <% else %>
+            <%= image_tag 'no-image-nurse.jpg', size: "130x90", class: "rounded-circle" %>
+          <% end %>
         </div>
        <div class="col-7">
           <%= link_to nurse.display_name(nurse), employer_nurse_path(nurse.id), class: "link-warning" %><br>

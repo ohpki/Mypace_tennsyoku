@@ -8,7 +8,11 @@
       </div>
     </div>
     <div class="col-xs-8 col-sm-4 col-md-4">
-      <%= image_tag @hospital.get_image(300, 240) %><br>
+      <% if @hospital.image.attached? %>
+        <%= image_tag @hospital.image, size: "300x240" %>
+      <% else %>
+        <%= image_tag 'no-image-hospital.jpg', size: "300x240" %>
+      <% end %>
     </div>
     <div class="col-xs-8 col-sm-5 col-md-6">
         病院名　　<%= @hospital.name %><br>

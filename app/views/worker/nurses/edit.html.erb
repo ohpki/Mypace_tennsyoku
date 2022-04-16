@@ -11,7 +11,11 @@
       <%= form_with model:@nurse, url: worker_nurses_path, method: :patch, local: true do |f| %>
       <div class="col-xs-8 col-sm-4 col-md-10">
         <%= render 'layouts/errors', obj: @nurse %>
-        <%#= image_tag @nurse.get_image(300, 240),class: "rounded-circle" %><br>
+        <% if @nurse.image.attached? %>
+          <%= image_tag @nurse.image, size: "200x200", class: "rounded-circle" %>
+        <% else %>
+          <%= image_tag 'no-image-nurse.jpg', size: "200x200", class: "rounded-circle" %>
+        <% end %>
         <%= f.label :"イメージ画像" %>
         <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
       </div>

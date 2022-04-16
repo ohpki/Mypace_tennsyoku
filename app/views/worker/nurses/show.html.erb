@@ -37,7 +37,11 @@
               <div class="row p-1">
                 <div class="col-sx-10 col-sm-3">
                   <% @job_information = JobInformation.find_by(id: subscription.job_information_id) %>
-                  <%= image_tag @job_information.hospital.get_image(150, 90) %>
+                  <% if @job_information.hospital.image.attached? %>
+                    <%= image_tag @job_information.hospital.image, size: "150x90" %>
+                  <% else %>
+                    <%= image_tag 'no-image-hospital.jpg', size: "150x90" %>
+                  <% end %>
                 </div>
                 <div class="col-sx-10 col-sm-7">
                   <%= link_to @job_information.title, worker_job_information_path(@job_information), class: "link-warning" %><br>
@@ -61,7 +65,11 @@
               <div class="row p-1">
                 <div class="col-sx-10 col-sm-3">
                   <% @job_information = JobInformation.find_by(id: favorite.job_information_id) %>
-                  <%= image_tag @job_information.hospital.get_image(150, 90) %>
+                  <% if @job_information.hospital.image.attached? %>
+                    <%= image_tag @job_information.hospital.image, size: "150x90" %>
+                  <% else %>
+                    <%= image_tag 'no-image-hospital.jpg', size: "150x90" %>
+                  <% end %>
                 </div>
                 <div class="col-sx-10 col-sm-7">
                   <%= link_to @job_information.title, worker_job_information_path(@job_information), class: "link-warning" %><br>
@@ -84,7 +92,11 @@
           <div class="job_informations-box">
             <div class="row p-1">
               <div class="col-sx-10 col-sm-3">
-                <%= image_tag chat_room.hospital.get_image(80, 55) %><br>
+                <% if chat_room.hospital.image.attached? %>
+                    <%= image_tag chat_room.hospital.image, size: "80x55" %><br>
+                  <% else %>
+                    <%= image_tag 'no-image-hospital.jpg', size: "80x55" %><br>
+                  <% end %>
                 <%= link_to chat_room.hospital.name, chat_room_chats_path(chat_room), class: "link-warning" %>
               </div>
               <div class="col-sx-10 col-sm-7">

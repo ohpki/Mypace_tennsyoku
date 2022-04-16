@@ -54,7 +54,11 @@
             <div class="job_informations-box">
               <div class="row p-1">
                 <div class="col-sx-10 col-sm-3">
-                  <%= image_tag scout.nurse.get_image(130, 110), class: "rounded-circle" %>
+                  <% if scout.nurse.image.attached? %>
+                    <%= image_tag scout.nurse.image, size: "110x90", class: "rounded-circle" %>
+                  <% else %>
+                    <%= image_tag 'no-image-nurse.jpg', size: "110x90", class: "rounded-circle" %>
+                  <% end %>
                 </div>
                 <div class="col-sx-10 col-sm-7">
                   <%= link_to scout.nurse.display_name(scout.nurse), employer_nurse_path(scout.nurse), class: "link-warning" %><br>
@@ -77,7 +81,11 @@
           <div class="job_informations-box">
             <div class="row p-1">
               <div class="col-sx-10 col-sm-3">
-                <%= image_tag chat_room.nurse.get_image(80, 55) %><br>
+                <% if chat_room.nurse.image.attached? %>
+                    <%= image_tag chat_room.nurse.image, size: "80x65", class: "rounded-circle" %><br>
+                  <% else %>
+                    <%= image_tag 'no-image-nurse.jpg', size: "80x65", class: "rounded-circle" %><br>
+                  <% end %>
                 <%= link_to chat_room.nurse.display_name(chat_room.nurse), chat_room_chats_path(chat_room), class: "link-warning" %>
               </div>
               <div class="col-sx-10 col-sm-7">

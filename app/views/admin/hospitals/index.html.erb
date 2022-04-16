@@ -18,7 +18,11 @@
         <div class="job_informations-box p-2">
           <div class="row">
             <div class="col-3">
-              <%= image_tag hospital.get_image(150, 90) %>
+              <% if hospital.image.attached? %>
+                <%= image_tag hospital.image, size: "150x90" %>
+              <% else %>
+                <%= image_tag 'no-image-hospital.jpg', size: "150x90" %>
+              <% end %>
             </div>
             <div class="col-7">
               <%= link_to hospital.name, admin_hospital_path(hospital), class: "link-warning" %><br>

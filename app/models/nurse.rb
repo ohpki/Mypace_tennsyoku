@@ -22,6 +22,8 @@ class Nurse < ApplicationRecord
       image.variant(resize_to_limit: [width, height]).processed
   end
 
+  
+
 # display_name_selectがtrueならニックネームを、falseなら苗字＋名前を表示
   def display_name(nurse)
     if display_name_select == false

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'homes/nurse'
   get 'homes/hospital'
   get 'homes/confirm'
+  get 'homes/help'
   resources :notifications, only: [:new, :create, :index, :edit]
   resources :chat_rooms, only: [:new, :create, :index, :show, :update] do
     resources :chats, only: [:new, :create, :index]

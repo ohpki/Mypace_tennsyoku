@@ -11,7 +11,11 @@
       <div class="col-lg-10">
         <%= render 'layouts/errors', obj: @hospital %>
         <%= form_with model:@hospital, url: employer_hospitals_path, method: :patch, local: true do |f| %>
-          <%= image_tag @hospital.get_image(250, 150), size: '300x240'%><br>
+          <% if @hospital.image.attached? %>
+            <%= image_tag @hospital.image, size: "250x150" %>
+          <% else %>
+            <%= image_tag 'no-image-hospital.jpg', size: "250x150" %>
+          <% end %>
           <%= f.label :"イメージ画像" %>
           <%= f.file_field :image, accept: "image/*", class:"form-control-file" %>
         <div class="form-group">
