@@ -13,9 +13,11 @@ class Worker::NursesController < ApplicationController
   end
 
   def update
-    
+    if params[:nurse]["birthday(1i)"].present? && params[:nurse]["birthday(2i)"].present? && params[:nurse]["birthday(3i)"].present?
+      @birthday = Date.new(params[:nurse]["birthday(1i)"].to_i, params[:nurse]["birthday(2i)"].to_i, params[:nurse]["birthday(3i)"].to_i)
+      @nurse.birthday = @birthday
+    end
     if @nurse.update(nurse_params)
-
       redirect_to worker_nurses_path, notice: "プロフィールを変更しました"
     else
       render :edit
@@ -47,8 +49,9 @@ class Worker::NursesController < ApplicationController
     :image, :job_detail,
     :qualification,
     :select_name,
-    :Introduction).merge(birthday:  Date.new(params[:nurse]["birthday(1i)"].to_i, params[:nurse]["birthday(2i)"].to_i, params[:nurse]["birthday(3i)"].to_i) )
-    
+    :Introduction,
+    )
+
   end
 
   def use_name_for_nickname
