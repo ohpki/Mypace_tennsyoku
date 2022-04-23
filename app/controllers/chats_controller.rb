@@ -6,7 +6,7 @@ class ChatsController < ApplicationController
     elsif hospital_signed_in?
       @chat_room = current_hospital.chat_rooms.find(params[:chat_room_id])
     end
-    @chats = Chat.where(chat_room_id: @chat_room.id)
+    @chats = Chat.where(chat_room_id: @chat_room.id).page(params[:page]).per(10)
     @chat = Chat.new
 
   end

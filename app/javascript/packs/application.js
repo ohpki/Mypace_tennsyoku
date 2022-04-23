@@ -13,6 +13,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 //require ('tab.js')
+//= require jquery.jscroll.min.js
 import "tab";
 
 

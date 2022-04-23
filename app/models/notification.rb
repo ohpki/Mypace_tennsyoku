@@ -5,9 +5,8 @@ class Notification < ApplicationRecord
 
   enum action: { chat: 0, subscription: 1, scout: 2 }
 
-  def notification_update(notification_id)
-    notification = Notification.find(notification_id)
-    notification.checked = true
-    notification.save
+  def notification_update
+    self.checked = true
+    save
   end
 end

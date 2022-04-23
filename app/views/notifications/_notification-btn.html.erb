@@ -1,32 +1,13 @@
 <div class="notification_btn mr-5">
   <% if notifications.where(checked: false).exists? %>
-    <%= link_to image_tag("btn-notification2.png"), notifications_path, remote: true %>
+    <%= link_to image_tag("btn-notification2.png", style: "cursor: pointer;" ), notifications_path, remote: true %>
       <%#= image_tag "btn-notification2.png" %>
-
-
   <% else %>
     <%#= link_to image_tag("btn-notification1.png"), notifications_path, remote: true %>
-    <%= image_tag "btn-notification1.png" %>
+    <%= link_to image_tag("btn-notification1.png", style: "cursor: pointer;" ), notifications_path, remote: true %>
   <% end %>
 </div>
 <div class="notification_index">
-    <p>通知</p>
-    <% notifications.each do |notification| %>
-      <% if notification.checked == false %>
-        <p class="text-danger d-inline">new</p>
-        <%# notification.checked = true %>
-        <%# notification.notification_update(notification.id) %>
-        <% end %>
-      <% if notification.action == "chat" %>
-        <%= link_to notification.action_i18n, chat_room_chats_path(notification.chst_room_id), class: "text-warning" %>が届いています。<br>
-      <% elsif notification.action == "subscription" %>
-        <%= link_to notification.action_i18n, employer_job_information_path(notification.job_information_id), class: "text-warning" %>が届いています。<br>
-        <% else %>
-      <%= link_to notification.action_i18n, worker_hospital_path(notification.hospital_id), class: "text-warning" %>が届いています。<br>
-      <% end %>
-    <% end %>
-    <div class="d-flex align-items-center justify-content-center">
-      <%= paginate notifications %>
-    </div>
+
 </div>
 
