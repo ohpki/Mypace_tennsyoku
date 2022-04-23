@@ -1,3 +1,5 @@
+var uncheckedId;
+
 $(document).on('turbolinks:load', function() {
     // ↓タブをクリックした時の処理↓
     $('.profile-tab').click(function(){
@@ -21,15 +23,17 @@ $(document).on('turbolinks:load', function() {
 // });
 
 $(document).on('turbolinks:load', function() {
-    $('.notification_btn').on('click', () => {
+    $('.notification_btn').on('ajax:success', () => {
     if ($('.notification_index').is(':visible')) {
         // 表示されている場合の処理
         $('.notification_index').hide();
     } else {
         // 非表示の場合の処理
         $('.notification_index').show();
+
     }
     });
+
 });
 
 $(window).on('turbolinks:load', function() {

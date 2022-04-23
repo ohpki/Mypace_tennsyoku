@@ -1,10 +1,10 @@
-
     <p>通知</p>
     <% notifications.each do |notification| %>
       <% if notification.checked == false %>
-        <p class="text-danger d-inline">new</p>
-        
-        <% end %>
+        <div class="text-danger d-inline">new</div>
+        <% notification.notification_update %>
+      <% end %>
+
       <% if notification.action == "chat" %>
         <%= link_to notification.action_i18n, chat_room_chats_path(notification.chst_room_id), class: "text-warning" %>が届いています。<br>
       <% elsif notification.action == "subscription" %>
@@ -12,8 +12,9 @@
         <% else %>
       <%= link_to notification.action_i18n, worker_hospital_path(notification.hospital_id), class: "text-warning" %>が届いています。<br>
       <% end %>
+
     <% end %>
+
     <div class="d-flex align-items-center justify-content-center">
-      <%= paginate notifications %>
+      <%= paginate notifications, remote: true %>
     </div>
-  
