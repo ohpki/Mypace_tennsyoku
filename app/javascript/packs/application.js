@@ -15,6 +15,7 @@ import "../stylesheets/application"
 //require ('tab.js')
 import "tab";
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

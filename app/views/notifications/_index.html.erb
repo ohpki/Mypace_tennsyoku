@@ -1,18 +1,9 @@
-<div class="notification_btn mr-5">
-  <% if notifications.where(checked: false).exists? %>
-    <%= image_tag "btn-notification2.png" %>
-  <% else %>
-    <%= image_tag "btn-notification1.png" %>
-  <% end %>
-  <%#= render "notifications/notification-btn", notifications: notifications %>
-</div>
-  <div class="notification_index">
+
     <p>通知</p>
     <% notifications.each do |notification| %>
       <% if notification.checked == false %>
         <p class="text-danger d-inline">new</p>
-        <% notification.checked = true %>
-        <% notification.notification_update(notification.id) %>
+        
         <% end %>
       <% if notification.action == "chat" %>
         <%= link_to notification.action_i18n, chat_room_chats_path(notification.chst_room_id), class: "text-warning" %>が届いています。<br>
@@ -25,5 +16,4 @@
     <div class="d-flex align-items-center justify-content-center">
       <%= paginate notifications %>
     </div>
-  </div>
-</div>
+  
