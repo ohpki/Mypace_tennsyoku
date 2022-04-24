@@ -11,7 +11,7 @@
             <%= link_to image_tag("btn-mine.png", width: '200', alt: "マイページ"), worker_nurses_path, class: "mr-5" %>
             <%= link_to image_tag("btn-sign-out.png", width: '200', alt: "ログアウト"), destroy_nurse_session_path, method: :delete, class: "mr-5" %>
         </ul>
-        <%= render 'notifications/notification-btn', notifications: @notifications %>
+        <%= render 'notifications/notification', notifications: @notifications %>
           <% elsif hospital_signed_in? %>
           <ul class="navbar-nav mt-auto">
             <%= link_to image_tag("btn-about.png", width: '200', alt: "サイトについて"), homes_about_path, class: "ml-5" %>
@@ -23,7 +23,7 @@
             <%= link_to image_tag("btn-sign-out.png", width: '200', alt: "ログアウト"), destroy_nurse_session_path, method: :delete, class: "mr-5" %>
 
           </ul>
-            <%= render 'notifications/notification-btn', notifications: @notifications, class: "mt-auto" %>
+            <%= render 'notifications/notification', notifications: @notifications, class: "mt-auto" %>
           <% elsif admin_signed_in? %>
             <ul class="navbar-nav mt-auto">
             <%= link_to image_tag("btn-about.png", width: '200', alt: "サイトについて"), homes_about_path, class: "mx-3" %>

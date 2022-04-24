@@ -27,6 +27,9 @@
       更新日:　<%= @job_information.updated_at.strftime('%Y/%m/%d') %>
     </div>
     <div class="row align-items-center justify-content-center">
+      <% if @job_information.job_offer_status == false %>
+        ※現在こちらの求人情報は非公開となっています。
+      <% end %>
       <% if nurse_signed_in? %>
         <% if @subscription.job_information_id == @job_information.id %>
         <div class="col-lg-3">

@@ -1,6 +1,10 @@
+<div class="notification_btn mr-5">
   <% if notifications.where(checked: false).exists? %>
     <%= link_to image_tag("btn-notification2.png", style: "cursor: pointer;" ), notifications_path, remote: true %>
   <% else %>
     <%= link_to image_tag("btn-notification1.png", style: "cursor: pointer;" ), notifications_path, remote: true %>
   <% end %>
+</div>
+<div class="notification_index">
 
+</div>

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'homes/confirm'
   get 'homes/help'
   resources :notifications, only: [:index]
-  
+
   resources :chat_rooms, only: [:new, :create, :index, :show, :update] do
     resources :chats, only: [:new, :create, :index]
   end

@@ -23,7 +23,7 @@ $(document).on('turbolinks:load', function() {
 // });
 
 $(document).on('turbolinks:load', function() {
-    $('.notification_btn').on('ajax:success', () => {
+    $('.notification_btn').on('ajax:before', () => {
     if ($('.notification_index').is(':visible')) {
         // 表示されている場合の処理
         $('.notification_index').hide();
