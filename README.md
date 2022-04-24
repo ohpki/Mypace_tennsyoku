@@ -1,6 +1,5 @@
-![about1](https://user-images.githubusercontent.com/98795405/164958174-0f1db0fa-e8a5-457a-89f1-28a0973bcbfa.jpg)
 # ナースのマイペース転職
-
+![readme](https://user-images.githubusercontent.com/98795405/164959867-779a9981-0955-473e-a567-dc268ca45368.gif)
 ## サイト概要
 
 看護師の転職サポートサイトです。
