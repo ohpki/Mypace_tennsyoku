@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="col-lg-3 ml-auto">
-      <%#= image_tag @hospital.get_image(250, 150) %>
+      
       <% if @hospital.image.attached? %>
         <%= image_tag @hospital.image, size: "250x150" %>
       <% else %>
@@ -31,7 +31,7 @@
             <%= link_to new_employer_job_information_path, class: "btn btn-secondary w-25 justify-content-center ml-lg-5" do %>
               <i class="far fa-edit"></i>新規作成
             <% end %>
-          </div>
+          </div><div class="scroll-list jscroll">
           <% @job_informations.each do |job_information| %>
             <div class="job_informations-box">
               <%= link_to job_information.title, employer_job_information_path(job_information), class: "link-warning" %><br>
@@ -42,19 +42,19 @@
             </div>
           <% end %>
           <div class="d-flex align-items-center justify-content-center">
-            <%= paginate @job_informations %>
+            <%= paginate @job_informations, :param_name => 'page_1' %></div>
           </div>
         </div>
         <div class="tabbox">
           <div class="d-flex align-items-center justify-content-center">
             スカウトした看護師一覧
-          </div>
+          </div><div class="scroll-list jscroll">
           <% @scouts.each do |scout| %>
           <% if scout.nurse.job_seeking_status == true %>
             <div class="job_informations-box">
               <div class="row p-1">
                 <div class="col-sx-10 col-sm-3">
-                  <% if scout.nurse.image.attached? %>
+                   <% if scout.nurse.image.attached? %>
                     <%= image_tag scout.nurse.image, size: "110x90", class: "rounded-circle" %>
                   <% else %>
                     <%= image_tag 'no-image-nurse.jpg', size: "110x90", class: "rounded-circle" %>
@@ -69,14 +69,14 @@
             </div>
           <% end %>
           <% end %>
-          <div class="d-flex align-items-center justify-content-center">
-            <%= paginate @scouts %>
+          <div class="paginate d-flex align-items-center justify-content-center">
+            <%= paginate @scouts, :param_name => 'page_2' %></div>
           </div>
         </div>
         <div class="tabbox">
           <div class="d-flex align-items-center justify-content-center">
             メッセージ一覧
-          </div>
+          </div><div class="scroll-list jscroll">
           <% @chat_rooms.each do |chat_room| %>
           <div class="job_informations-box">
             <div class="row p-1">
@@ -101,8 +101,8 @@
             </div>
           </div>
           <% end %>
-          <div class="d-flex align-items-center justify-content-center">
-            <%= paginate @chat_rooms %>
+          <div class="paginate d-flex align-items-center justify-content-center">
+            <%= paginate @chat_rooms, :param_name => 'page_3' %></div>
           </div>
         </div>
       </div>

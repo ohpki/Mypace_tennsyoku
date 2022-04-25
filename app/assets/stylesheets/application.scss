@@ -56,6 +56,16 @@ footer {
   bottom: 0;
 }
 
+@media screen and (max-width:768px) {
+ footer {
+  height: 80px;
+  width: 100%;
+  background-color: #440000;
+  position: absolute;
+  bottom: 0;
+}
+}
+
 .notice {
   width: 500px;
   margin: 20px auto;

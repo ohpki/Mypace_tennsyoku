@@ -22,13 +22,13 @@
         紹介文　　<%= @hospital.Introduction %><br>
     </div>
     <div class="row align-items-center justify-content-center">
-      <div class="col-lg-3 ml-auto d-inline">
+      <div class="col-xs-4 col-md-4 my-3">
         <%= form_with url: report_new_mail_path, method: :get, local: true do |f| %>
           <%= f.hidden_field :destination, :value => @hospital.email %>
           <%= f.submit "メールを送る", class: "btn btn-secondary" %>
         <% end %>
       </div>
-      <div class="col-3">
+      <div class="col-xs-4 col-md-4 my-3">
         <%= link_to "退会処理", admin_hospital_confirm_path(@hospital), class: "btn btn-danger" %>
       </div>
     </div>

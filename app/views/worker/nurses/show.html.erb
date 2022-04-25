@@ -35,7 +35,7 @@
           <% @subscriptions.each do |subscription| %>
             <div class="job_informations-box">
               <div class="row p-1">
-                <div class="col-sx-10 col-sm-3">
+                <div class="col-xs-10 col-sm-3">
                   <% @job_information = JobInformation.find_by(id: subscription.job_information_id) %>
                   <% if @job_information.hospital.image.attached? %>
                     <%= image_tag @job_information.hospital.image, size: "150x90" %>
@@ -43,7 +43,7 @@
                     <%= image_tag 'no-image-hospital.jpg', size: "150x90" %>
                   <% end %>
                 </div>
-                <div class="col-sx-10 col-sm-7">
+                <div class="col-xs-10 col-sm-7">
                   <%= link_to @job_information.title, worker_job_information_path(@job_information), class: "link-warning" %><br>
                   勤務形態　　<%= @job_information.work_style %><br>
                   給与　　　　<%= @job_information.alarys %><br>
@@ -63,7 +63,7 @@
           <% @favorites.each do |favorite| %>
             <div class="job_informations-box">
               <div class="row p-1">
-                <div class="col-sx-10 col-sm-3">
+                <div class="col-xs-10 col-sm-3">
                   <% @job_information = JobInformation.find_by(id: favorite.job_information_id) %>
                   <% if @job_information.hospital.image.attached? %>
                     <%= image_tag @job_information.hospital.image, size: "150x90" %>
@@ -71,7 +71,7 @@
                     <%= image_tag 'no-image-hospital.jpg', size: "150x90" %>
                   <% end %>
                 </div>
-                <div class="col-sx-10 col-sm-7">
+                <div class="col-xs-10 col-sm-7">
                   <%= link_to @job_information.title, worker_job_information_path(@job_information), class: "link-warning" %><br>
                   勤務形態　　<%= @job_information.work_style %><br>
                   給与　　　　<%= @job_information.alarys %><br>
