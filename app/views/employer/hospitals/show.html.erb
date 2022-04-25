@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="col-lg-3 ml-auto">
-      
+
       <% if @hospital.image.attached? %>
         <%= image_tag @hospital.image, size: "250x150" %>
       <% else %>
@@ -20,7 +20,7 @@
     <div class="col-lg-8 ml-auto">
     <div class="profile">
       <ul class="profile-list">
-        <li class="profile-tab box-active"><i class="far fa-copy"></i>求人情報</li>
+        <li class="profile-tab box-active profile-tab-active"><i class="far fa-copy"></i>求人情報</li>
         <li class="profile-tab"><i class="fas fa-star"></i>スカウト</li>
         <li class="profile-tab"><i class="fas fa-envelope"></i>メッセージ</li>
       </ul>
@@ -42,7 +42,7 @@
             </div>
           <% end %>
           <div class="d-flex align-items-center justify-content-center">
-            <%= paginate @job_informations, :param_name => 'page_1' %></div>
+            <%= paginate @job_informations, :param_name => 'page_1', params: {tab: 0} %></div>
           </div>
         </div>
         <div class="tabbox">
@@ -70,7 +70,7 @@
           <% end %>
           <% end %>
           <div class="paginate d-flex align-items-center justify-content-center">
-            <%= paginate @scouts, :param_name => 'page_2' %></div>
+            <%= paginate @scouts, :param_name => 'page_2', params: {tab: 1} %></div>
           </div>
         </div>
         <div class="tabbox">
@@ -102,7 +102,7 @@
           </div>
           <% end %>
           <div class="paginate d-flex align-items-center justify-content-center">
-            <%= paginate @chat_rooms, :param_name => 'page_3' %></div>
+            <%= paginate @chat_rooms, :param_name => 'page_3', params: {tab: 2} %></div>
           </div>
         </div>
       </div>

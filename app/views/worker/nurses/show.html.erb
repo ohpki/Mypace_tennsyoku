@@ -8,8 +8,6 @@
       </div>
     </div>
     <div class="col-lg-3 ml-auto">
-      <%#= image_tag Nurse.find(current_nurse.id).get_image(300, 240), class: "rounded-circle" %><br>
-      <!--<p>画像,</p>-->
       <% if @nurse.image.attached? %>
         <%= image_tag @nurse.image, size: "200x200", class: "rounded-circle" %>
       <% else %>
@@ -23,7 +21,7 @@
 
     <div class="profile">
       <ul class="profile-list">
-        <li class="profile-tab box-active"><i class="far fa-copy"></i>応募した求人</li>
+        <li class="profile-tab box-active profile-tab-active"><i class="far fa-copy"></i>応募した求人</li>
         <li class="profile-tab"><i class="fas fa-star"></i>お気に入り</li>
         <li class="profile-tab"><i class="fas fa-envelope"></i>メッセージ</li>
       </ul>
@@ -53,7 +51,7 @@
             </div>
           <% end %>
           <div class="d-flex align-items-center justify-content-center">
-            <%= paginate @subscriptions %>
+            <%= paginate @subscriptions, :param_name => 'page_1', params: {tab: 0} %>
           </div>
         </div>
         <div class="tabbox">
@@ -81,7 +79,7 @@
              </div>
           <% end %>
           <div class="d-flex align-items-center justify-content-center">
-            <%= paginate @favorites %>
+            <%= paginate @favorites, :param_name => 'page_2', params: {tab: 1} %>
           </div>
         </div>
         <div class="tabbox">
@@ -113,7 +111,7 @@
           </div>
             <% end %>
           <div class="d-flex align-items-center justify-content-center">
-            <%= paginate @chat_rooms %>
+            <%= paginate @chat_rooms, :param_name => 'page_3', params: {tab: 2} %>
           </div>
         </div>
       </div>
