@@ -9,8 +9,8 @@ class Employer::NursesController < ApplicationController
   end
 
   def index
-    @nurses = Nurse.where(job_seeking_status: true).order(created_at: :desc).page(params[:page]).per(10)
-
+    @nurse_all = Nurse.where(job_seeking_status: true)
+    @nurses = @nurse_all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def search

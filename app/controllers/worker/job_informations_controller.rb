@@ -1,7 +1,8 @@
 class Worker::JobInformationsController < ApplicationController
 
   def index
-    @job_informations = JobInformation.where(job_offer_status: true).order(created_at: :desc).page(params[:page]).per(10)
+    @job_information_all = JobInformation.where(job_offer_status: true)
+    @job_informations = @job_information_all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
