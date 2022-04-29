@@ -16,7 +16,8 @@ class Employer::NursesController < ApplicationController
   def search
     @nurses = Nurse.where("address LIKE?","%#{params[:word]}%")
     .or(Nurse.where("qualification LIKE?", "%#{params[:word]}%"))
-    @nurses = @nurses.where(job_seeking_status: true).order(created_at: :desc).page(params[:page]).per(10)
+    @nurse_all = @nurses.where(job_seeking_status: true)
+    @nurses = @nurse_all.order(created_at: :desc).page(params[:page]).per(10)
     render :index
   end
 end

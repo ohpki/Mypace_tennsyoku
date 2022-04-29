@@ -21,7 +21,8 @@ class Worker::JobInformationsController < ApplicationController
     .or(JobInformation.where("work_style LIKE?", "%#{params[:word]}%"))
     .or(JobInformation.where("job_detail LIKE?","%#{params[:word]}%"))
     .or(JobInformation.where("address LIKE?","%#{params[:word]}%"))
-    @job_informations = @job_informations.where(job_offer_status: true).order(created_at: :desc).page(params[:page]).per(10)
+    @job_information_all = @job_informations.where(job_offer_status: true)
+    @job_informations = @job_information_all.order(created_at: :desc).page(params[:page]).per(10)
     render :index
   end
 
