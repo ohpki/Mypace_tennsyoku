@@ -1,7 +1,7 @@
 class Admin::NursesController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @nurses = Nurse.where(job_seeking_status: true).order(created_at: :desc).page(params[:page]).per(10)
+    @nurses = Nurse.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
