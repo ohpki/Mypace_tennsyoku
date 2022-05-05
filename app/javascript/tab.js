@@ -43,7 +43,6 @@ $(document).on('turbolinks:load', function() {
 
     }
     });
-
 });
 
 $(window).on('turbolinks:load', function() {
