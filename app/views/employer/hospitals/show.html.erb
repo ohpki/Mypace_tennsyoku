@@ -8,8 +8,7 @@
       </div>
     </div>
     <div class="col-lg-3 ml-auto">
-
-      <% if @hospital.image.attached? %>
+       <% if @hospital.image.attached? %>
         <%= image_tag @hospital.image, size: "250x150" %>
       <% else %>
         <%= image_tag 'no-image-hospital.jpg', size: "250x150" %>
