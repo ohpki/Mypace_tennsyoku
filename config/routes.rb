@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'images/index'
+  get 'images/new'
+  get 'images/edit'
+  get 'images/show'
   devise_for :admin, controllers: {
   sessions: 'admin/sessions'
 }
